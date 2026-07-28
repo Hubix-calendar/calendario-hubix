@@ -4,3 +4,6 @@ _check.js
 
 # preview local do Claude Code, não faz parte do site publicado
 artifact-preview.html
+
+# playbook interno, nao faz parte do site do cliente
+PLAYBOOK-NOVO-CLIENTE.md
