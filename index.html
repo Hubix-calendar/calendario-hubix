@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HUBIX BPO Financeiro — Calendário Setembro 2026</title>
+<meta name="description" content="Calendário editorial minimalista de Setembro. Clique num dia com conteúdo para ver roteiro/briefing e aprovar ou recusar." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#fcf8fb; --panel:#ffffff; --panel-2:#f3f0f2; --ink:#1b1b1d; --ink-2:#3d4a40; --ink-3:#6c7b6f;
+    --line:#e4e7e4; --line-2:#eef1ee;
+    --post:#3b82f6; --carrossel:#a855f7; --frase:#f97316; --reel:#ef4444;
+    --ok:#0a8f57; --no:#ba1a1a;
+    --brand:#006d41; --brand-solid:#01b671; --accent:#0a8f57;
+    --radius:28px; --shadow:0 6px 26px rgba(20,40,28,.07);
+    --font-head:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0f1411; --panel:#191d1a; --panel-2:#141815; --ink:#e6e8e3; --ink-2:#aebbb0; --ink-3:#84958a;
+      --line:#2a302c; --line-2:#222824; --brand:#4edf96;
+      --shadow:0 18px 50px -14px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="light"]{--bg:#fcf8fb;--panel:#fff;--panel-2:#f3f0f2;--ink:#1b1b1d;--ink-2:#3d4a40;--ink-3:#6c7b6f;--line:#e4e7e4;--line-2:#eef1ee;--brand:#006d41;--shadow:0 6px 26px rgba(20,40,28,.07)}
+  :root[data-theme="dark"]{--bg:#0f1411;--panel:#191d1a;--panel-2:#141815;--ink:#e6e8e3;--ink-2:#aebbb0;--ink-3:#84958a;--line:#2a302c;--line-2:#222824;--brand:#4edf96;--shadow:0 18px 50px -14px rgba(0,0,0,.6)}
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;line-height:1.5;
+    font-feature-settings:"kern";
+  }
+  h1,h2,h3,.cal-month,.m-title,.display{font-family:var(--font-head)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* nav */
+  .topnav{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-2)}
+  .nav-inner{max-width:1120px;margin:0 auto;height:70px;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-family:var(--font-head)}
+  .brand .mk{width:38px;height:38px;border-radius:11px;overflow:hidden;background:linear-gradient(135deg,var(--brand-solid),var(--accent));color:#fff;display:grid;place-items:center;font-size:17px;font-weight:800}
+  .brand .mk img{width:100%;height:100%;object-fit:cover;display:block}
+  .brand #brandName{font-size:20px;color:var(--brand);letter-spacing:-.01em}
+  .nav-actions{display:flex;gap:8px}
+  .icon-btn{cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--ink-2);width:40px;height:40px;border-radius:12px;font-size:16px;transition:.15s}
+  .icon-btn:hover{color:var(--brand);border-color:var(--brand)}
+
+  .page{max-width:1120px;margin:0 auto;padding:0 24px 80px}
+
+  /* hero */
+  .hero{padding:44px 0 30px}
+  .kicker{font-size:13px;font-weight:600;color:var(--brand);letter-spacing:.3px;text-transform:uppercase;margin-bottom:10px}
+  .display{font-size:clamp(36px,6vw,52px);font-weight:800;letter-spacing:-.025em;margin:0 0 8px;color:var(--ink)}
+  .lead{color:var(--ink-2);font-size:clamp(16px,2.2vw,19px);margin:0;max-width:600px}
+
+  /* stat cards */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:40px}
+  @media (max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat-card{background:var(--panel);border:1px solid var(--line-2);border-radius:24px;padding:22px 24px;box-shadow:var(--shadow)}
+  .stat-card p{margin:0 0 6px;font-size:13.5px;color:var(--ink-2);font-weight:500}
+  .stat-card h3{margin:0;font-size:30px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin:0 0 20px;padding-left:4px}
+  .lg{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-2);font-weight:500}
+  .lg .dot{width:10px;height:10px;border-radius:50%}
+
+  /* calendar */
+  .cal-card{background:var(--panel);border-radius:32px;box-shadow:var(--shadow);padding:18px;border:1px solid var(--line-2)}
+  .cal-month{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:6px 0 16px;padding-left:8px}
+  .dow{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--line-2)}
+  .dow span{text-align:center;font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.6px}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+  .cell{aspect-ratio:1/1;border-radius:22px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:12px 13px;transition:.16s}
+  .cell.empty{background:transparent}
+  .cell.day{background:var(--panel-2)}
+  .cell .num{font-size:19px;font-weight:600;color:var(--ink-2);font-family:var(--font-head)}
+  .cell.has{cursor:pointer;border:1px solid var(--line)}
+  .cell.has:hover{background:var(--panel);border-color:var(--brand)}
+  .cell.has:hover .num{color:var(--brand)}
+  .cell .dots{display:flex;gap:5px;flex-wrap:wrap}
+  .cell .dots i{width:9px;height:9px;border-radius:50%;display:block}
+  .cell .status{position:absolute;top:9px;right:10px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;color:#fff;font-weight:800}
+  .cell .status.ok{background:var(--ok)}
+  .cell .status.no{background:var(--no)}
+  .cell.holiday .num{color:var(--reel)}
+
+  @media (max-width:560px){
+    .cal-card{padding:10px;border-radius:24px}
+    .grid,.dow{gap:7px}
+    .cell{padding:8px 8px;border-radius:15px}
+    .cell .num{font-size:15px}
+    .cell .dots i{width:7px;height:7px}
+  }
+
+  footer{text-align:center;color:var(--ink-3);font-size:13px;padding:40px 24px 60px;background:var(--panel-2);border-top:1px solid var(--line-2);margin-top:20px}
+
+  /* modal */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(8px);z-index:100;display:none;align-items:flex-end;justify-content:center;padding:0}
+  .overlay.show{display:flex}
+  @media (min-width:640px){.overlay{align-items:center;padding:24px}}
+  .modal{background:var(--panel);width:100%;max-width:600px;max-height:92vh;overflow-y:auto;border-radius:26px 26px 0 0;box-shadow:var(--shadow);transform:translateY(12px);opacity:0;transition:.28s cubic-bezier(.2,.9,.3,1)}
+  @media (min-width:640px){.modal{border-radius:26px}}
+  .overlay.show .modal{transform:translateY(0);opacity:1}
+  .m-grip{width:38px;height:5px;border-radius:3px;background:var(--line);margin:10px auto 0}
+  @media (min-width:640px){.m-grip{display:none}}
+  .m-head{padding:18px 26px 14px;border-bottom:1px solid var(--line-2);position:sticky;top:0;background:var(--panel);z-index:2}
+  .m-date{font-size:13px;color:var(--ink-2);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+  .m-badge{float:right;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#fff;padding:4px 11px;border-radius:100px}
+  .m-title{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:8px 0 4px}
+  .m-goal{font-size:13px;font-weight:600}
+  .m-body{padding:20px 26px 8px}
+  .blk{margin-bottom:20px}
+  .blk h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-3);margin:0 0 8px}
+  .blk .content{font-size:14.5px;color:var(--ink);white-space:pre-line}
+  .tags{font-size:13px;color:var(--ink-2);word-spacing:2px}
+  .scene{background:var(--bg);border:1px solid var(--line-2);border-radius:14px;padding:12px 14px;margin-bottom:9px}
+  :root[data-theme="dark"] .scene,@media (prefers-color-scheme:dark){.scene{background:#141416}}
+  .scene b{font-size:11px;letter-spacing:.4px;text-transform:uppercase;display:block;margin-bottom:5px}
+  .scene .txt{color:var(--ink-2);white-space:pre-line;font-size:13.5px}
+  .teleprompter{background:var(--bg);border:1px solid var(--line-2);border-left:3px solid var(--reel);border-radius:14px;padding:18px 20px;font-size:17px;line-height:1.75;color:var(--ink);letter-spacing:-.01em}
+  :root[data-theme="dark"] .teleprompter,@media (prefers-color-scheme:dark){.teleprompter{background:#141416}}
+  .dz{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line-2);font-size:14px}
+  .dz:last-child{border-bottom:0}
+  .dz .k{color:var(--ink-3);min-width:96px;font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.3px;padding-top:2px}
+  .dz .v{color:var(--ink);flex:1}
+
+  /* approval */
+  .m-foot{position:sticky;bottom:0;background:var(--panel);border-top:1px solid var(--line-2);padding:16px 26px 22px}
+  .decision-row{display:flex;gap:10px}
+  .btn{flex:1;border:none;border-radius:14px;padding:14px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s;letter-spacing:-.01em}
+  .btn.approve{background:var(--ok);color:#fff}
+  .btn.reject{background:var(--bg);color:var(--no);border:1px solid var(--line)}
+  :root[data-theme="dark"] .btn.reject,@media (prefers-color-scheme:dark){.btn.reject{background:#2c2c2e}}
+  .btn:active{transform:scale(.97)}
+  .btn.sel-ok{background:var(--ok);color:#fff;box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 30%,transparent)}
+  .btn.sel-no{background:var(--no);color:#fff;box-shadow:0 0 0 3px color-mix(in srgb,var(--no) 30%,transparent)}
+  .reject-box{margin-top:12px;display:none}
+  .reject-box.show{display:block}
+  .reject-box label{font-size:13px;color:var(--ink-2);font-weight:600;display:block;margin-bottom:7px}
+  .reject-box textarea{width:100%;min-height:76px;resize:vertical;border:1px solid var(--line);border-radius:12px;padding:11px 13px;font-family:inherit;font-size:14px;background:var(--bg);color:var(--ink);outline:none}
+  .reject-box textarea:focus{border-color:var(--no)}
+  .reject-box .save{margin-top:9px;width:100%;background:var(--no);color:#fff;border:none;border-radius:12px;padding:12px;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit}
+
+  /* setup / identidade */
+  .fld{margin-bottom:16px}
+  .fld label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-2);margin-bottom:7px}
+  .fld input[type=text],.fld input[type=password],.fld select,.fld textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 13px;font-family:inherit;font-size:14px;background:var(--bg);color:var(--ink);outline:none}
+  :root[data-theme="dark"] .fld input,:root[data-theme="dark"] .fld select,:root[data-theme="dark"] .fld textarea,@media (prefers-color-scheme:dark){.fld input,.fld select,.fld textarea{background:#141416}}
+  .fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--brand)}
+  .fld .hint{font-size:12px;color:var(--ink-3);margin-top:5px}
+  .color-row{display:flex;gap:12px}
+  .color-row .fld{flex:1}
+  .color-pick{display:flex;align-items:center;gap:9px}
+  .color-pick input[type=color]{width:44px;height:40px;border:1px solid var(--line);border-radius:10px;padding:2px;background:var(--bg);cursor:pointer}
+  .color-pick input[type=text]{flex:1}
+  .logo-up{display:flex;align-items:center;gap:14px}
+  .logo-prev{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-weight:700;font-size:24px;overflow:hidden;flex:none}
+  .logo-prev img{width:100%;height:100%;object-fit:cover}
+  .logo-up label.upbtn{display:inline-block;border:1px solid var(--line);border-radius:12px;padding:10px 15px;font-size:13.5px;font-weight:600;cursor:pointer;color:var(--ink)}
+  .setup-intro{font-size:14px;color:var(--ink-2);margin-bottom:18px;background:var(--bg);border:1px solid var(--line-2);border-radius:12px;padding:13px 15px}
+  :root[data-theme="dark"] .setup-intro,@media (prefers-color-scheme:dark){.setup-intro{background:#141416}}
+  .save-brand{width:100%;background:linear-gradient(100deg,var(--brand),var(--accent));color:#fff;border:none;border-radius:14px;padding:14px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit}
+  .status-note{margin-top:12px;font-size:13px;color:var(--ink-2);background:var(--bg);border:1px solid var(--line-2);border-radius:12px;padding:11px 13px;display:none}
+  :root[data-theme="dark"] .status-note,@media (prefers-color-scheme:dark){.status-note{background:#141416}}
+  .status-note.show{display:block}
+  .status-note b{color:var(--ink)}
+
+  /* banco de aprendizado */
+  .learn-fab{position:fixed;right:18px;bottom:18px;z-index:70;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:100px;padding:11px 17px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:var(--shadow);display:inline-flex;gap:9px;align-items:center;font-family:inherit;letter-spacing:-.01em}
+  .learn-fab .cnt{background:var(--reel);color:#fff;border-radius:100px;font-size:12px;padding:1px 8px;font-weight:800;min-width:20px;text-align:center}
+  .learn-fab .cnt.zero{background:var(--ink-3)}
+  .insight{background:var(--bg);border:1px solid var(--line-2);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+  :root[data-theme="dark"] .insight,@media (prefers-color-scheme:dark){.insight{background:#141416}}
+  .insight .big{font-size:15px;color:var(--ink);font-weight:600;margin-bottom:12px}
+  .insight .big b{color:var(--reel)}
+  .terms{display:flex;flex-wrap:wrap;gap:7px}
+  .term{background:var(--panel);border:1px solid var(--line);border-radius:100px;padding:5px 12px;font-size:13px;color:var(--ink)}
+  .term b{color:var(--reel);font-weight:700}
+  .empty-learn{text-align:center;color:var(--ink-3);padding:30px 10px;font-size:14px}
+  .log-item{border:1px solid var(--line-2);border-radius:14px;padding:13px 15px;margin-bottom:10px}
+  .log-item .lh{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:6px}
+  .log-item .lh .lt{font-weight:600;font-size:14px;color:var(--ink)}
+  .log-item .lh .ld{font-size:12px;color:var(--ink-3);white-space:nowrap}
+  .log-item .lr{font-size:14px;color:var(--ink-2)}
+  .log-item .lf{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--ink-3);margin-top:6px}
+  .learn-actions{display:flex;gap:10px;margin-top:6px}
+  .learn-actions button{flex:1;border-radius:12px;padding:12px;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+  :root[data-theme="dark"] .learn-actions button,@media (prefers-color-scheme:dark){.learn-actions button{background:#2c2c2e}}
+  .learn-actions button.danger{color:var(--no)}
+</style>
+</head>
+<body>
+
+<button class="learn-fab" id="learnFab" title="Banco de aprendizado">🧠 Aprendizado <span class="cnt zero" id="learnCnt">0</span></button>
+
+<nav class="topnav">
+  <div class="nav-inner">
+    <div class="brand"><span class="mk" id="brandMk">H</span> <span id="brandName">HUBIX</span></div>
+    <div class="nav-actions">
+      <button class="icon-btn" id="setupBtn" title="Identidade da marca">⚙</button>
+      <button class="icon-btn" id="themeBtn" title="Tema">◐</button>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+  <header class="hero">
+    <div class="kicker">Calendário Editorial · BPO Financeiro</div>
+    <h1 class="display">Setembro 2026</h1>
+    <p class="lead">Estratégia de aquisição para donos de mídia exterior. Toque num dia marcado para ver o conteúdo, o roteiro ou o briefing de design — e aprovar.</p>
+  </header>
+
+  <section class="stats">
+    <div class="stat-card"><p>Total de conteúdo</p><h3>22 peças</h3></div>
+    <div class="stat-card"><p>Mix de formatos</p><h3>4 formatos</h3></div>
+    <div class="stat-card"><p>Foco em vídeo</p><h3>6 reels</h3></div>
+    <div class="stat-card"><p>Direcionamento</p><h3>1 objetivo</h3></div>
+  </section>
+
+  <div class="legend">
+    <span class="lg"><span class="dot" style="background:var(--post)"></span>Post</span>
+    <span class="lg"><span class="dot" style="background:var(--carrossel)"></span>Carrossel</span>
+    <span class="lg"><span class="dot" style="background:var(--frase)"></span>Frase</span>
+    <span class="lg"><span class="dot" style="background:var(--reel)"></span>Reel</span>
+  </div>
+
+  <div class="cal-card">
+    <h2 class="cal-month">Setembro</h2>
+    <div class="dow"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</main>
+
+<footer>HUBIX BPO Financeiro · Nicho: Mídia Exterior · As aprovações ficam salvas neste navegador.</footer>
+
+<!-- MODAL INSTALAÇÃO / IDENTIDADE HUBIX -->
+<div class="overlay" id="overlaySetup">
+  <div class="modal" id="modalSetup">
+    <div class="m-grip"></div>
+    <div class="m-head">
+      <span class="m-date">Instalação</span>
+      <h3 class="m-title">Identidade Visual da HUBIX</h3>
+      <div class="m-goal" style="color:var(--brand)">A "ID" da marca que o sistema vai usar</div>
+    </div>
+    <div class="m-body">
+      <div class="setup-intro">Preencha a identidade da HUBIX. Isso define as cores do calendário, o logo e o tom que a IA usa ao reescrever conteúdos. Fica salvo só neste navegador.</div>
+
+      <div class="fld">
+        <label>Nome da marca</label>
+        <input type="text" id="sNome" value="HUBIX" />
+      </div>
+
+      <div class="fld">
+        <label>Logo</label>
+        <div class="logo-up">
+          <div class="logo-prev" id="sLogoPrev">H</div>
+          <label class="upbtn">Enviar imagem (PNG/SVG)
+            <input type="file" id="sLogoFile" accept="image/*" style="display:none" />
+          </label>
+        </div>
+        <div class="hint">Sem imagem, usa a inicial do nome.</div>
+      </div>
+
+      <div class="color-row">
+        <div class="fld">
+          <label>Cor primária</label>
+          <div class="color-pick">
+            <input type="color" id="sPrimColor" value="#01B671" />
+            <input type="text" id="sPrimHex" value="#01B671" />
+          </div>
+        </div>
+        <div class="fld">
+          <label>Cor de destaque</label>
+          <div class="color-pick">
+            <input type="color" id="sAccColor" value="#0CA678" />
+            <input type="text" id="sAccHex" value="#0CA678" />
+          </div>
+        </div>
+      </div>
+
+      <div class="fld">
+        <label>Slogan (opcional)</label>
+        <input type="text" id="sSlogan" placeholder="Ex.: Seu financeiro no lugar certo." />
+      </div>
+
+      <div class="fld">
+        <label>Tom de voz (guia a IA)</label>
+        <select id="sTom">
+          <option>Profissional e direto</option>
+          <option>Próximo e didático</option>
+          <option>Provocador e ousado</option>
+        </select>
+      </div>
+    </div>
+    <div class="m-foot">
+      <button class="save-brand" id="saveBrand">Salvar identidade da HUBIX</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL APRENDIZADO -->
+<div class="overlay" id="overlay2">
+  <div class="modal" id="modal2">
+    <div class="m-grip"></div>
+    <div class="m-head">
+      <span class="m-date">Banco de Aprendizado</span>
+      <h3 class="m-title">O que as recusas nos ensinam</h3>
+      <div class="m-goal" style="color:var(--reel)">Padrões extraídos dos motivos de recusa</div>
+    </div>
+    <div class="m-body" id="learnBody"></div>
+    <div class="m-foot">
+      <div class="learn-actions">
+        <button id="learnCopy">📋 Copiar base (JSON)</button>
+        <button id="learnClear" class="danger">Limpar base</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal">
+    <div class="m-grip"></div>
+    <div class="m-head">
+      <span class="m-date" id="mDate"></span>
+      <span class="m-badge" id="mBadge"></span>
+      <h3 class="m-title" id="mTitle"></h3>
+      <div class="m-goal" id="mGoal"></div>
+    </div>
+    <div class="m-body" id="mBody"></div>
+    <div class="m-foot">
+      <div class="decision-row">
+        <button class="btn approve" id="btnApprove">✓ Aprovado</button>
+        <button class="btn reject" id="btnReject">✕ Recusado</button>
+      </div>
+      <div class="reject-box" id="rejectBox">
+        <label>Por que foi recusado? Descreva o ajuste necessário:</label>
+        <textarea id="rejectText" placeholder="Ex.: trocar o gancho, ajustar cor da arte, revisar a oferta..."></textarea>
+        <button class="save" id="rejectSave">Salvar recusa</button>
+      </div>
+      <div class="status-note" id="statusNote"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const FMT={post:'Post',carrossel:'Carrossel',frase:'Frase',reel:'Reel'};
+const FCOLOR={post:'var(--post)',carrossel:'var(--carrossel)',frase:'var(--frase)',reel:'var(--reel)'};
+
+/* ---- DADOS ---- */
+const DATA={
+ '01':{f:'reel',goal:'Atenção · dor',t:'3 sinais de que o financeiro da sua empresa de mídia está no vermelho',
+   legenda:'Você fatura bem, mas no fim do mês some tudo? Talvez não seja falta de cliente — é falta de controle. Salve este vídeo. 👇 Comente "DIAGNÓSTICO" que a gente te mostra por onde começar.',
+   tags:'#midiaexterior #outdoor #bpofinanceiro #fluxodecaixa #gestaofinanceira',
+   roteiro:'Você fatura bem, mas no fim do mês parece que não sobrou nada? Se isso acontece na sua empresa de mídia exterior, presta atenção nesses três sinais. Primeiro: você não sabe quanto realmente sobra depois de cada locação. Segundo: o imposto sempre vira uma surpresa no fim do mês. E terceiro: entra dinheiro o tempo todo, mas nunca tem caixa pra crescer. Se você marcou pelo menos um, o problema não é faturamento, é controle. E é exatamente isso que um BPO financeiro resolve. Comenta DIAGNÓSTICO aqui embaixo que eu te mostro por onde começar.'},
+ '02':{f:'carrossel',goal:'Educação · dor',t:'Por que empresas de mídia exterior sofrem com fluxo de caixa',
+   legenda:'O paradoxo de quem vive de mídia: muito faturamento, pouco caixa. Arrasta pra entender — e comenta se é a sua realidade.',
+   tags:'#midiaexterior #fluxodecaixa #gestao #outdoor #financeiroempresarial',
+   design:{formato:'Carrossel · 6 slides · 1080×1350px (4:5)',estilo:'Minimalista, fundo claro, muito respiro. 1 ideia por slide.',
+     texto:'Slide 1 (capa): "Por que empresas de mídia exterior sofrem com fluxo de caixa" em título grande.\nS2: Locação move valores altos entrando e saindo o tempo todo.\nS3: Sem previsão, você paga fornecedor antes do cliente pagar você.\nS4: Resultado: aperto de caixa mesmo com contratos cheios.\nS5: A saída é previsibilidade — não é vender mais.\nS6 (CTA): BPO Financeiro organiza esse ciclo. "Bora conversar?" + @hubix',
+     cores:'Fundo off-white; título ink escuro; destaque em roxo (#5e5ce6).',
+     elementos:'Ícone de fluxo/setas no S2. Número grande de página (1/6). Logo HUBIX no rodapé de todos.',
+     acao:'Design monta os 6 slides com hierarquia forte de título, seta indicando "arraste" no S1.'}},
+ '03':{f:'post',goal:'Reflexão · dor',t:'Você sabe quanto realmente sobra depois de cada locação?',
+   legenda:'Faturamento não é lucro. Entre a nota emitida e o dinheiro no bolso tem imposto, comissão, manutenção do ponto e prazo de recebimento. Se você não mede isso ponto a ponto, está pilotando no escuro. Um BPO te mostra a margem real de cada mídia. Quer ver a sua?',
+   tags:'#lucroreal #margem #midiaexterior #bpofinanceiro',
+   design:{formato:'Post único · 1080×1350px (4:5)',estilo:'Foto de outdoor real com overlay escuro + pergunta grande centralizada.',
+     texto:'Título na arte: "Quanto SOBRA depois de cada locação?" — palavra SOBRA em destaque colorido.',
+     cores:'Foto de fundo + gradiente escuro para leitura; texto branco; SOBRA em ciano (#0a84ff).',
+     elementos:'Assinatura HUBIX no canto inferior. Sem poluição — só a pergunta.',
+     acao:'Design faz tratamento da foto (escurecer p/ contraste) e aplica o título com boa legibilidade.'}},
+ '04':{f:'frase',goal:'Branding · dor',t:'"Faturar muito não é lucrar. Mídia parada é dinheiro parado."',
+   legenda:'Marca essa frase na parede do escritório. E se o seu financeiro não mostra a diferença entre faturar e lucrar, fala com a gente.',
+   tags:'#frasedodia #gestaofinanceira #midiaexterior',
+   design:{formato:'Card de frase · 1080×1080px (1:1)',estilo:'Tipográfico puro, fundo sólido, zero imagem.',
+     texto:'Frase centralizada, grande. "lucrar" em cor de destaque.',
+     cores:'Fundo roxo profundo (#5e5ce6) ou preto; texto branco.',
+     elementos:'Aspas decorativas discretas. Logo HUBIX pequeno embaixo.',
+     acao:'Design escolhe uma fonte com peso, quebra a frase em 3 linhas equilibradas.'}},
+
+ '07':{f:'frase',goal:'Data · institucional',t:'7 de Setembro: independência também é financeira',
+   legenda:'Independência de verdade é não depender de achismo pra tomar decisão. No feriado a gente descansa; no dia a dia, a gente organiza o seu financeiro. 🇧🇷',
+   tags:'#7desetembro #independencia #bpofinanceiro #midiaexterior',
+   design:{formato:'Card comemorativo · 1080×1080px',estilo:'Sóbrio, elegante — NÃO exagerar no verde-amarelo.',
+     texto:'"Independência também é financeira." + linha de apoio pequena.',
+     cores:'Base neutra (preto/off-white) com um toque discreto de verde e amarelo. Evitar clichê.',
+     elementos:'Detalhe gráfico sutil (faixa fina). Logo HUBIX.',
+     acao:'Design cria versão institucional refinada, sem parecer propaganda de rua.'}},
+ '08':{f:'carrossel',goal:'Educação · imposto',t:'ISS, ICMS ou nada disso? A confusão tributária da mídia exterior',
+   legenda:'Locação de mídia paga qual imposto? Depende — e é aí que mora o perigo. Arrasta e entenda por que enquadrar errado custa caro.',
+   tags:'#tributacao #ISS #ICMS #midiaexterior #planejamentotributario',
+   design:{formato:'Carrossel · 6 slides · 1080×1350px',estilo:'Didático, minimalista, ícones fiscais simples.',
+     texto:'S1 (capa): "ISS, ICMS ou nada disso?" grande.\nS2: A regra muda por cidade e por estado.\nS3: Enquadrar errado = pagar imposto a mais (ou multa).\nS4: Regime certo pode reduzir a conta legalmente.\nS5: Isso não é sorte, é planejamento tributário.\nS6 (CTA): BPO cuida disso. Fala com a HUBIX.',
+     cores:'Off-white + destaque em roxo. Palavras ISS/ICMS em caixa colorida.',
+     elementos:'Ícone de mapa/documento. Paginação 1/6. Logo no rodapé.',
+     acao:'Design destaca os termos tributários em "tags" coloridas para facilitar leitura.'}},
+ '09':{f:'reel',goal:'Educação · operação',t:'Qual operação financeira é a certa para o seu outdoor?',
+   legenda:'Não existe resposta única — existe a resposta pro SEU negócio. Comenta o tamanho da sua operação que a gente aponta o caminho.',
+   tags:'#regimetributario #simplesnacional #midiaexterior #bpofinanceiro',
+   roteiro:'Qual é a operação financeira certa pra sua empresa de mídia exterior? A verdade é que não existe uma resposta única. Depende do seu faturamento, da sua margem e de quanto você reinveste em novos pontos. E escolher o regime errado faz o seu lucro ir embora em imposto todo mês. A boa notícia é que dá pra simular tudo isso antes de decidir. Chama a gente no direct que a gente faz essa simulação junto com você, de graça.'},
+ '10':{f:'post',goal:'Educação · DRE',t:'DRE: o raio-x que mostra se cada ponto de mídia dá lucro',
+   legenda:'DRE é o exame de sangue da sua empresa. Ele revela, ponto a ponto, o que dá lucro e o que só dá trabalho. Muita empresa de mídia opera anos sem olhar o próprio. E você, já viu o seu este mês?',
+   tags:'#DRE #resultado #midiaexterior #bpofinanceiro #gestao',
+   design:{formato:'Post único · 1080×1350px',estilo:'Conceito visual: "raio-x". Fundo escuro estilo chapa de exame.',
+     texto:'Título: "DRE: o raio-x do seu lucro." Palavra DRE gigante.',
+     cores:'Fundo escuro azulado, linhas/gráfico translúcido ao fundo, texto branco.',
+     elementos:'Silhueta de outdoor como se fosse "raio-x". Logo HUBIX.',
+     acao:'Design cria a metáfora visual do raio-x sem virar clichê médico — foco no gráfico financeiro.'}},
+ '11':{f:'frase',goal:'Branding · imposto',t:'"Não é sobre pagar menos imposto. É sobre pagar o imposto certo."',
+   legenda:'Sonegar é risco. Planejar é inteligência. A gente fica do lado do planejamento — e do seu caixa.',
+   tags:'#planejamentotributario #frasedodia #bpofinanceiro',
+   design:{formato:'Card de frase · 1080×1080px',estilo:'Tipográfico, contraste alto.',
+     texto:'Frase em 2 blocos: "menos imposto" riscado / "imposto certo" em destaque.',
+     cores:'Fundo claro; "certo" em verde (#34c759) ou roxo.',
+     elementos:'Efeito de texto riscado no "menos". Logo HUBIX.',
+     acao:'Design usa o riscado para reforçar a virada da mensagem.'}},
+
+ '14':{f:'reel',goal:'Autoridade · solução',t:'O que um BPO Financeiro faz pela sua empresa de mídia (em 60s)',
+   legenda:'Terceirizar o financeiro não é perder o controle — é finalmente ter controle. Veja tudo que sai da sua mesa. Salva pra não esquecer.',
+   tags:'#bpofinanceiro #terceirizacao #midiaexterior #gestaofinanceira',
+   roteiro:'Terceirizar o seu financeiro não é perder o controle. É finalmente ter controle. Deixa eu te mostrar tudo que sai da sua mesa quando você tem um BPO. Contas a pagar e a receber. Conciliação bancária. Fluxo de caixa organizado. Impostos pagos no dia certo. DRE todo mês. E relatórios prontos pra você tomar decisão. Enquanto a gente cuida dos números, você faz o que ninguém faz pela sua empresa: vender mídia. O diagnóstico é gratuito e o link tá aqui na bio.'},
+ '15':{f:'carrossel',goal:'Autoridade · antes/depois',t:'Antes x Depois: o financeiro de uma empresa de mídia com BPO',
+   legenda:'A diferença que 30 dias com um BPO fazem. Arrasta e veja o antes e depois.',
+   tags:'#antesedepois #bpofinanceiro #midiaexterior #gestao',
+   design:{formato:'Carrossel · 6 slides · 1080×1350px',estilo:'Split-screen Antes (cinza/bagunça) x Depois (limpo/colorido).',
+     texto:'S1: "ANTES x DEPOIS".\nS2: planilha desatualizada → dados em tempo real.\nS3: imposto de surpresa → calendário fiscal previsível.\nS4: "acho que deu lucro" → DRE com margem real.\nS5: dono preso na planilha → dono fechando novos pontos.\nS6 (CTA): A diferença tem nome: BPO. Vamos conversar?',
+     cores:'Lado ANTES dessaturado; lado DEPOIS na cor da marca (roxo/azul).',
+     elementos:'Linha divisória vertical central. Ícones ✕ (antes) e ✓ (depois).',
+     acao:'Design cria template split reutilizável para os 4 slides do meio.'}},
+ '16':{f:'post',goal:'Quebra de objeção',t:'Terceirizar o financeiro é perder o controle? Mito.',
+   legenda:'O maior medo de quem pensa em BPO: "vou perder o controle". É o contrário. Você recebe relatórios claros, acompanha por dashboard e decide com número na mão — sem executar a parte operacional chata. Controle é ver, não é digitar boleto.',
+   tags:'#mito #bpofinanceiro #controlefinanceiro #midiaexterior',
+   design:{formato:'Post único · 1080×1350px',estilo:'Formato "MITO x VERDADE" bem direto.',
+     texto:'Selo "MITO" grande riscado + "VERDADE: você ganha controle, não perde."',
+     cores:'Fundo claro; MITO em vermelho riscado; VERDADE em verde/roxo.',
+     elementos:'Carimbo/selo gráfico. Logo HUBIX.',
+     acao:'Design cria o selo "MITO" com estética de carimbo e destaca a virada.'}},
+ '17':{f:'frase',goal:'Branding · posicionamento',t:'"Você cuida das telas. A gente cuida dos números."',
+   legenda:'Seu talento é vender e operar mídia. O nosso é fazer o financeiro trabalhar a favor disso.',
+   tags:'#frasedodia #midiaexterior #bpofinanceiro',
+   design:{formato:'Card de frase · 1080×1080px',estilo:'Tipográfico com leve textura de outdoor ao fundo.',
+     texto:'"Você cuida das telas. A gente cuida dos números." — dividir os dois lados visualmente.',
+     cores:'Metade com imagem sutil de painel/tela; metade cor sólida da marca.',
+     elementos:'Divisória diagonal. Logo HUBIX.',
+     acao:'Design equilibra os dois "lados" da frase na composição.'}},
+ '18':{f:'reel',goal:'Autoridade · bastidor',t:'Bastidores: como organizamos o caixa de um cliente em 30 dias',
+   legenda:'Não é mágica, é método. Um mês, quatro etapas, um financeiro sob controle. Salva pra ver o passo a passo.',
+   tags:'#bastidores #metodo #bpofinanceiro #fluxodecaixa #midiaexterior',
+   roteiro:'Deixa eu te mostrar como a gente organiza um financeiro bagunçado em trinta dias. Na primeira semana é diagnóstico: mapeamos todas as contas, os contratos de locação e os impostos. Na segunda e na terceira semana vem a organização: conciliação bancária, fluxo de caixa e calendário fiscal, tudo em ordem. E na quarta semana chega a clareza: o primeiro DRE e um relatório de decisão na mão do dono. Não é mágica, é método. Quer o mesmo pra sua empresa? Chama a gente aqui.'},
+
+ '21':{f:'carrossel',goal:'Valor · relatórios',t:'5 relatórios que todo dono de mídia exterior deveria receber toda semana',
+   legenda:'5 relatórios que mudam a forma como você decide. Recebe todos hoje? Se não, fala com a HUBIX.',
+   tags:'#relatorios #gestao #midiaexterior #bpofinanceiro #dadosfinanceiros',
+   design:{formato:'Carrossel · 6 slides · 1080×1350px',estilo:'Cada slide = 1 relatório, com mini-mockup de dashboard.',
+     texto:'S1 (capa): "5 relatórios que mudam como você decide".\nS2: Fluxo de caixa projetado.\nS3: Contas a receber por cliente e por ponto.\nS4: Margem por mídia (qual outdoor dá lucro).\nS5: Posição de impostos do mês.\nS6: DRE gerencial + CTA.',
+     cores:'Off-white, gráficos em roxo/azul/verde. Consistente entre slides.',
+     elementos:'Mini gráfico ilustrativo por slide (barra, linha, pizza). Numeração 01–05.',
+     acao:'Design cria 5 mini-mockups simples de relatório — não precisa dado real, é ilustrativo.'}},
+ '22':{f:'post',goal:'Prova social · case',t:'Case: como reduzimos a inadimplência de locação de um cliente',
+   legenda:'Cliente de mídia exterior vivia com locações atrasadas e caixa imprevisível. Em 90 dias com BPO: régua de cobrança implantada, inadimplência caindo de __% para __%, e caixa projetado com 8 semanas de antecedência. Método, não sorte. Quer resultado parecido?  [AJUSTAR NÚMEROS REAIS]',
+   tags:'#case #resultado #inadimplencia #midiaexterior #bpofinanceiro',
+   design:{formato:'Post único · 1080×1350px',estilo:'Card de resultado com número grande em destaque.',
+     texto:'Número gigante da queda de inadimplência (ex.: "-38%"). Abaixo: "inadimplência em 90 dias".',
+     cores:'Fundo escuro; número em verde (#34c759); apoio em branco.',
+     elementos:'Seta pra baixo. Selo "Case real". Logo HUBIX. IMPORTANTE: só publicar com número verdadeiro.',
+     acao:'Design deixa o número como camada editável; equipe insere o dado real antes de aprovar.'}},
+ '23':{f:'reel',goal:'Objeção · conversão',t:'"Vale a pena pro meu tamanho?" A pergunta que todo cliente faz',
+   legenda:'Spoiler: BPO não é só pra empresa grande. Quanto menor a estrutura, mais o dono precisa de tempo. Comenta seu faturamento aproximado que a gente te diz se faz sentido.',
+   tags:'#bpofinanceiro #pequenaempresa #midiaexterior #gestao',
+   roteiro:'Recebi essa pergunta aqui: vale a pena um BPO pra uma empresa do meu tamanho? Olha, quanto menor a estrutura, mais o dono faz tudo. Vende, opera e ainda cuida do financeiro sozinho. E é justamente aí que o BPO libera o que você tem de mais escasso: o seu tempo. E tem mais: custa menos que um funcionário de financeiro e entrega muito mais, com método, imposto certo e relatório na mão. Comenta aqui o seu faturamento aproximado que eu te respondo com sinceridade se faz sentido pra você.'},
+ '24':{f:'frase',goal:'Branding · conversão',t:'"Enquanto você negocia o próximo ponto, seu financeiro já está resolvido."',
+   legenda:'É esse o tipo de tranquilidade que a gente entrega. Bora colocar seu financeiro no piloto certo?',
+   tags:'#frasedodia #midiaexterior #bpofinanceiro',
+   design:{formato:'Card de frase · 1080×1080px',estilo:'Tipográfico calmo, sensação de alívio/tranquilidade.',
+     texto:'Frase em destaque; "já está resolvido" na cor da marca.',
+     cores:'Tons suaves, fundo claro, respiro grande.',
+     elementos:'Ícone de check discreto. Logo HUBIX.',
+     acao:'Design transmite calma na composição — muito espaço em branco.'}},
+ '25':{f:'carrossel',goal:'Conversão · checklist',t:'Checklist: seu financeiro está pronto para escalar?',
+   legenda:'Antes de abrir novos pontos, responda 6 perguntas. Marcou menos de 4? Está na hora de conversar com um BPO. Link na bio.',
+   tags:'#checklist #escala #midiaexterior #bpofinanceiro #gestao',
+   design:{formato:'Carrossel · 6 slides · 1080×1350px',estilo:'Formato checklist com caixas ☐ marcáveis.',
+     texto:'S1 (capa): "Seu financeiro está pronto pra escalar?"\nS2: ☐ Sei a margem real de cada mídia?\nS3: ☐ Meu imposto está no regime mais eficiente?\nS4: ☐ Tenho fluxo de caixa projetado?\nS5: ☐ Recebo DRE todo mês?\nS6 (CTA): Marcou menos de 4? Fala com a HUBIX. Link na bio.',
+     cores:'Off-white; checkboxes em roxo; CTA em destaque.',
+     elementos:'Checkbox grande por slide. Numeração. Logo.',
+     acao:'Design cria um checkbox estilizado consistente e um S6 com CTA forte.'}},
+
+ '28':{f:'post',goal:'Urgência · conversão',t:'Setembro acabando. Seu 4º trimestre começa organizado ou no escuro?',
+   legenda:'O último trimestre define o ano. Quem entra em outubro com fluxo de caixa projetado e imposto sob controle joga diferente. Ainda dá tempo de organizar antes da virada. Chama a HUBIX hoje.',
+   tags:'#4trimestre #planejamento #midiaexterior #bpofinanceiro',
+   design:{formato:'Post único · 1080×1350px',estilo:'Contraste "escuro x claro" = escuro/organizado.',
+     texto:'"Seu Q4 começa organizado ou no escuro?" — "organizado" claro, "escuro" sombreado.',
+     cores:'Metade escura / metade clara na composição.',
+     elementos:'Divisória. Logo HUBIX + CTA discreto.',
+     acao:'Design usa o contraste luz/sombra como metáfora literal da mensagem.'}},
+ '29':{f:'reel',goal:'Conversão · oferta',t:'Convite: diagnóstico financeiro gratuito para empresas de mídia exterior',
+   legenda:'Uma conversa. Zero custo. A gente olha seu financeiro e aponta as 3 maiores oportunidades de dinheiro que estão passando batido. Vagas limitadas no mês. Link na bio.  [CONFIRMAR LINK DA OFERTA]',
+   tags:'#diagnosticogratuito #bpofinanceiro #midiaexterior #oferta',
+   roteiro:'Se você vive de mídia exterior, esse convite é pra você. A gente tá abrindo diagnósticos financeiros gratuitos. Numa conversa, a gente analisa o seu financeiro e te mostra os três lugares onde você tá perdendo dinheiro sem nem perceber. É sem compromisso e sem enrolação: você sai com clareza mesmo que não feche nada com a gente. Mas as vagas são limitadas esse mês, então agenda o seu no link da bio antes de setembro acabar.'},
+ '30':{f:'frase',goal:'Fechamento · conversão',t:'"O melhor momento para organizar o financeiro foi ontem. O segundo melhor é agora."',
+   legenda:'Outubro começa amanhã. Que ele comece com o financeiro no lugar. Fala com a HUBIX BPO Financeiro.',
+   tags:'#frasedodia #bpofinanceiro #midiaexterior #comeceagora',
+   design:{formato:'Card de frase · 1080×1080px',estilo:'Encerramento do mês — elegante, definitivo.',
+     texto:'Frase em destaque; "agora" na cor da marca, maior.',
+     cores:'Fundo escuro premium; texto branco; "agora" em roxo/azul.',
+     elementos:'Pequeno "Setembro → Outubro". Logo HUBIX.',
+     acao:'Design fecha o mês com peça de maior impacto tipográfico.'}}
+};
+
+/* ---- CALENDÁRIO ---- */
+const YEAR=2026, MONTH=9, DAYS=30, FIRST_DOW=2; // Set/2026, 1º = terça (Sun=0)
+const HOLIDAYS={'07':true};
+const DOW_NAMES=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+const grid=document.getElementById('grid');
+
+function pad(n){return String(n).padStart(2,'0')}
+function dowOf(day){return (FIRST_DOW + (day-1))%7}
+
+for(let i=0;i<FIRST_DOW;i++){
+  const e=document.createElement('div'); e.className='cell empty'; grid.appendChild(e);
+}
+for(let day=1;day<=DAYS;day++){
+  const key=pad(day);
+  const cell=document.createElement('div');
+  cell.className='cell day';
+  const item=DATA[key];
+  if(HOLIDAYS[key]) cell.classList.add('holiday');
+  let dots='';
+  if(item){
+    cell.classList.add('has'); cell.dataset.key=key;
+    dots=`<div class="dots"><i style="background:${FCOLOR[item.f]}"></i></div>`;
+  }
+  cell.innerHTML=`<span class="num">${day}</span>${dots}<div class="status-slot"></div>`;
+  if(item) cell.addEventListener('click',()=>openModal(key));
+  grid.appendChild(cell);
+}
+
+/* ---- STATUS PERSISTÊNCIA ---- */
+function stKey(key){return 'hubix-set2026-'+key}
+function getStatus(key){try{return JSON.parse(localStorage.getItem(stKey(key)))}catch(e){return null}}
+function setStatus(key,val){localStorage.setItem(stKey(key),JSON.stringify(val))}
+function paintStatus(){
+  document.querySelectorAll('.cell.has').forEach(c=>{
+    const s=getStatus(c.dataset.key);
+    let el=c.querySelector('.status');
+    if(el) el.remove();
+    if(s){
+      const b=document.createElement('div');
+      b.className='status '+(s.decision==='ok'?'ok':'no');
+      b.textContent=s.decision==='ok'?'✓':'✕';
+      c.appendChild(b);
+    }
+  });
+}
+paintStatus();
+
+/* ---- MODAL ---- */
+const overlay=document.getElementById('overlay');
+const mDate=document.getElementById('mDate'),mBadge=document.getElementById('mBadge'),
+      mTitle=document.getElementById('mTitle'),mGoal=document.getElementById('mGoal'),mBody=document.getElementById('mBody');
+const btnApprove=document.getElementById('btnApprove'),btnReject=document.getElementById('btnReject'),
+      rejectBox=document.getElementById('rejectBox'),rejectText=document.getElementById('rejectText'),
+      rejectSave=document.getElementById('rejectSave'),statusNote=document.getElementById('statusNote');
+let CUR=null;
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+
+function openModal(key){
+  CUR=key;
+  const it=DATA[key];
+  const day=parseInt(key,10);
+  mDate.textContent=`${day} de Setembro · ${DOW_NAMES[dowOf(day)]}`;
+  mBadge.textContent=FMT[it.f];
+  mBadge.style.background=FCOLOR[it.f];
+  mTitle.textContent=it.t;
+  mGoal.textContent=it.goal;
+  mGoal.style.color=FCOLOR[it.f];
+
+  let html='';
+  // legenda / descrição do post
+  html+=`<div class="blk"><h4>${it.f==='reel'?'Descrição do post (legenda)':'Legenda do post'}</h4><div class="content">${esc(it.legenda)}</div></div>`;
+
+  if(it.roteiro){
+    html+=`<div class="blk"><h4>Roteiro · leitura para teleprompter</h4><div class="teleprompter">${esc(it.roteiro)}</div></div>`;
+  }
+  if(it.design){
+    const d=it.design;
+    html+=`<div class="blk"><h4>Briefing para o design</h4>`;
+    const rows=[['Formato',d.formato],['Estilo',d.estilo],['Texto na arte',d.texto],['Cores',d.cores],['Elementos',d.elementos],['O que fazer',d.acao]];
+    rows.forEach(([k,v])=>{ if(v) html+=`<div class="dz"><div class="k">${k}</div><div class="v">${esc(v)}</div></div>`; });
+    html+=`</div>`;
+  }
+  html+=`<div class="blk"><h4>Hashtags</h4><div class="tags">${esc(it.tags)}</div></div>`;
+  mBody.innerHTML=html;
+
+  // reset approval UI + carregar estado salvo
+  rejectBox.classList.remove('show');
+  rejectText.value='';
+  btnApprove.classList.remove('sel-ok');
+  btnReject.classList.remove('sel-no');
+  statusNote.classList.remove('show'); statusNote.innerHTML='';
+  const saved=getStatus(key);
+  if(saved){
+    if(saved.decision==='ok'){ btnApprove.classList.add('sel-ok'); showNote('ok'); }
+    else{ btnReject.classList.add('sel-no'); rejectText.value=saved.reason||''; showNote('no',saved.reason);
+      if(saved.reason){ rejectBox.classList.add('show'); } }
+  }
+
+  overlay.classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function showNote(dec,reason){
+  statusNote.classList.add('show');
+  if(dec==='ok') statusNote.innerHTML='<b>✓ Aprovado.</b> Peça liberada para produção.';
+  else statusNote.innerHTML='<b>✕ Recusado.</b> Motivo: '+(reason?esc(reason):'(sem descrição)');
+}
+function closeModal(){ overlay.classList.remove('show'); document.body.style.overflow=''; CUR=null; }
+
+overlay.addEventListener('click',e=>{ if(e.target===overlay) closeModal(); });
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape') return;
+  if(overlay.classList.contains('show')) closeModal();
+  const o2=document.getElementById('overlay2');
+  if(o2.classList.contains('show')){o2.classList.remove('show');document.body.style.overflow=''}
+  if(overlaySetup.classList.contains('show')) closeSetup();
+});
+
+btnApprove.addEventListener('click',()=>{
+  btnApprove.classList.add('sel-ok'); btnReject.classList.remove('sel-no');
+  rejectBox.classList.remove('show');
+  setStatus(CUR,{decision:'ok',ts:Date.now()});
+  showNote('ok'); paintStatus();
+});
+btnReject.addEventListener('click',()=>{
+  btnReject.classList.add('sel-no'); btnApprove.classList.remove('sel-ok');
+  rejectBox.classList.add('show');
+  statusNote.classList.remove('show');
+  rejectText.focus();
+});
+rejectSave.addEventListener('click',()=>{
+  const reason=rejectText.value.trim();
+  setStatus(CUR,{decision:'no',reason,ts:Date.now()});
+  logLearning(CUR,reason);
+  showNote('no',reason); paintStatus();
+});
+
+/* ---- BANCO DE APRENDIZADO ---- */
+const LKEY='hubix-learning-set2026';
+function getLog(){try{return JSON.parse(localStorage.getItem(LKEY))||[]}catch(e){return[]}}
+function saveLog(a){localStorage.setItem(LKEY,JSON.stringify(a))}
+function logLearning(key,reason){
+  if(!reason) return;
+  const it=DATA[key];
+  const log=getLog();
+  log.unshift({dia:parseInt(key,10),data:parseInt(key,10)+'/09/2026',formato:FMT[it.f],titulo:it.t,motivo:reason,ts:Date.now()});
+  saveLog(log); updateCnt();
+}
+function updateCnt(){
+  const n=getLog().length;
+  learnCnt.textContent=n;
+  learnCnt.classList.toggle('zero',n===0);
+}
+const STOP=new Set('de a o que e do da em um para pra com nao não uma os no se na por mais as dos como mas ao das seu sua ou ser quando muito nos ja já esta está eu tambem também so só pelo pela ate até isso ela entre era depois sem mesmo aos ter seus quem me esse eles voce você essa num nem meu minha numa qual nos lhe deles esta estar foi fazer fica ficar ainda aqui ta tá vai deve fica dele dela ficou muito precisa quero queria acho tem tinha esse essa isso aqui'.split(' '));
+function analyze(log){
+  const freq={};
+  log.forEach(e=>{
+    (e.motivo||'').toLowerCase().replace(/[^\wáàâãéêíóôõúçü\s]/g,' ').split(/\s+/).forEach(w=>{
+      if(w.length<3||STOP.has(w)) return;
+      freq[w]=(freq[w]||0)+1;
+    });
+  });
+  return Object.entries(freq).filter(([,c])=>c>=2).sort((a,b)=>b[1]-a[1]).slice(0,12);
+}
+function renderLearn(){
+  const log=getLog();
+  if(!log.length){
+    learnBody.innerHTML='<div class="empty-learn">Nenhuma recusa registrada ainda.<br>Quando um conteúdo for recusado, o motivo entra aqui e o sistema começa a mapear os padrões.</div>';
+    return;
+  }
+  const terms=analyze(log);
+  let html='<div class="insight">';
+  html+=`<div class="big"><b>${log.length}</b> recus${log.length>1?'as':'a'} registrada${log.length>1?'s':''}. Padrões que aprendemos:</div>`;
+  if(terms.length){
+    html+='<div class="terms">'+terms.map(([w,c])=>`<span class="term">${esc(w)} <b>${c}×</b></span>`).join('')+'</div>';
+  }else{
+    html+='<div class="terms" style="color:var(--ink-3);font-size:13px">Ainda poucos dados para padrões — registre mais recusas.</div>';
+  }
+  html+='</div>';
+  log.forEach(e=>{
+    html+=`<div class="log-item"><div class="lh"><span class="lt">${esc(e.titulo)}</span><span class="ld">${esc(e.data)}</span></div><div class="lr">"${esc(e.motivo)}"</div><div class="lf">${esc(e.formato)}</div></div>`;
+  });
+  learnBody.innerHTML=html;
+}
+const overlay2=document.getElementById('overlay2');
+const learnBody=document.getElementById('learnBody');
+document.getElementById('learnFab').addEventListener('click',()=>{
+  renderLearn(); overlay2.classList.add('show'); document.body.style.overflow='hidden';
+});
+overlay2.addEventListener('click',e=>{ if(e.target===overlay2){overlay2.classList.remove('show');document.body.style.overflow=''} });
+document.getElementById('learnCopy').addEventListener('click',(ev)=>{
+  const data=JSON.stringify(getLog(),null,2);
+  navigator.clipboard.writeText(data).then(()=>{ev.target.textContent='✓ Copiado!';setTimeout(()=>ev.target.textContent='📋 Copiar base (JSON)',1500)});
+});
+document.getElementById('learnClear').addEventListener('click',()=>{
+  if(confirm('Limpar todo o banco de aprendizado? Esta ação não pode ser desfeita.')){
+    saveLog([]); updateCnt(); renderLearn();
+  }
+});
+updateCnt();
+
+/* ---- IDENTIDADE DA MARCA (HUBIX) ---- */
+const LOGO_DEFAULT='data:image/png;base64,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';
+const BRAND_KEY='hubix-brand';
+const BRAND_DEFAULT={nome:'HUBIX',logo:LOGO_DEFAULT,prim:'#01B671',acc:'#0CA678',slogan:'',tom:'Profissional e direto'};
+function getBrand(){try{return Object.assign({},BRAND_DEFAULT,JSON.parse(localStorage.getItem(BRAND_KEY))||{})}catch(e){return Object.assign({},BRAND_DEFAULT)}}
+function applyBrand(){
+  const b=getBrand();
+  document.documentElement.style.setProperty('--brand',b.prim);
+  document.documentElement.style.setProperty('--accent',b.acc);
+  const mk=document.getElementById('brandMk');
+  if(b.logo){ mk.innerHTML='<img src="'+b.logo+'" alt="logo">'; }
+  else { mk.textContent=(b.nome||'H').trim().charAt(0).toUpperCase(); }
+  document.getElementById('brandName').textContent=b.nome||'HUBIX';
+}
+
+const overlaySetup=document.getElementById('overlaySetup');
+function openSetup(){
+  const b=getBrand();
+  sNome.value=b.nome; sPrimColor.value=b.prim; sPrimHex.value=b.prim;
+  sAccColor.value=b.acc; sAccHex.value=b.acc; sSlogan.value=b.slogan||'';
+  sTom.value=b.tom||'Profissional e direto';
+  const lp=document.getElementById('sLogoPrev');
+  if(b.logo) lp.innerHTML='<img src="'+b.logo+'" alt="logo">'; else lp.textContent=(b.nome||'H').charAt(0);
+  overlaySetup.classList.add('show'); document.body.style.overflow='hidden';
+}
+function closeSetup(){ overlaySetup.classList.remove('show'); document.body.style.overflow=''; }
+document.getElementById('setupBtn').addEventListener('click',openSetup);
+overlaySetup.addEventListener('click',e=>{ if(e.target===overlaySetup) closeSetup(); });
+
+// sincronizar color picker <-> hex
+function bindColor(pick,hex){
+  pick.addEventListener('input',()=>{hex.value=pick.value.toUpperCase()});
+  hex.addEventListener('input',()=>{ if(/^#[0-9a-fA-F]{6}$/.test(hex.value)) pick.value=hex.value; });
+}
+let PENDING_LOGO=null;
+bindColor(sPrimColor,sPrimHex); bindColor(sAccColor,sAccHex);
+document.getElementById('sLogoFile').addEventListener('change',e=>{
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{ PENDING_LOGO=r.result; document.getElementById('sLogoPrev').innerHTML='<img src="'+r.result+'" alt="logo">'; };
+  r.readAsDataURL(f);
+});
+document.getElementById('saveBrand').addEventListener('click',()=>{
+  const b=getBrand();
+  const nb={
+    nome:sNome.value.trim()||'HUBIX',
+    logo: PENDING_LOGO!==null ? PENDING_LOGO : b.logo,
+    prim:(/^#[0-9a-fA-F]{6}$/.test(sPrimHex.value)?sPrimHex.value:sPrimColor.value),
+    acc:(/^#[0-9a-fA-F]{6}$/.test(sAccHex.value)?sAccHex.value:sAccColor.value),
+    slogan:sSlogan.value.trim(),
+    tom:sTom.value
+  };
+  localStorage.setItem(BRAND_KEY,JSON.stringify(nb));
+  PENDING_LOGO=null;
+  applyBrand(); closeSetup();
+});
+
+applyBrand();
+// primeira instalação: abrir setup se ainda não configurado
+if(!localStorage.getItem(BRAND_KEY)) setTimeout(openSetup,400);
+
+/* ---- TEMA ---- */
+document.getElementById('themeBtn').addEventListener('click',()=>{
+  const cur=document.documentElement.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  document.documentElement.setAttribute('data-theme',cur==='dark'?'light':'dark');
+});
+</script>
+</body>
+</html>
