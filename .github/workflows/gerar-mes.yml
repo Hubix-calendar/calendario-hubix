@@ -1,0 +1,109 @@
+name: Novo mês do calendário
+
+on:
+  workflow_dispatch:
+    inputs:
+      mes:
+        description: 'Mês (ex.: outubro, novembro, 2027-01)'
+        required: true
+        type: string
+
+      estrategia:
+        description: >-
+          A ESTRATÉGIA DO MÊS. Escreva como quer o calendário: tema, frequência,
+          dias da semana, formatos, oferta, campanha. Em branco = repete a mesma
+          estrutura do mês anterior, só com temas novos.
+        required: false
+        type: string
+
+      ano:
+        description: 'Ano (em branco = ano do último mês cadastrado)'
+        required: false
+        type: string
+
+      modo:
+        description: 'ia = escreve o conteúdo · vazio = só monta a grade para preencher à mão'
+        required: false
+        type: choice
+        options: [ia, vazio]
+        default: ia
+
+      ate:
+        description: 'Só no modo "vazio": monta a grade de MES até este mês (ex.: dezembro)'
+        required: false
+        type: string
+
+      aprendizado:
+        description: 'Opcional — cole o JSON do Banco de Aprendizado (botão 🧠 → Copiar base)'
+        required: false
+        type: string
+
+      mock:
+        description: 'Testar o fluxo sem gastar API (conteúdo falso)'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+# uma execução por vez: duas rodadas simultâneas brigariam pelo mesmo index.html
+concurrency:
+  group: novo-mes
+  cancel-in-progress: false
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Montar o mês
+        id: gerar
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MES: ${{ inputs.mes }}
+          ANO: ${{ inputs.ano }}
+          MODO: ${{ inputs.modo }}
+          ATE: ${{ inputs.ate }}
+          ESTRATEGIA: ${{ inputs.estrategia }}
+          APRENDIZADO: ${{ inputs.aprendizado }}
+          MOCK: ${{ inputs.mock && '1' || '' }}
+        run: node scripts/gerar-mes.mjs
+
+      - name: Publicar no site
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A index.html conteudo-*.md
+          if git diff --cached --quiet; then
+            echo "Nada mudou — nenhum commit criado."
+            exit 0
+          fi
+          git commit -m "Calendário ${{ steps.gerar.outputs.rotulo }} (${{ steps.gerar.outputs.pecas }} peças)"
+          git push
+
+      - name: Resumo
+        run: |
+          {
+            echo "### ✅ ${{ steps.gerar.outputs.rotulo }}"
+            echo ""
+            echo "**${{ steps.gerar.outputs.pecas }} peças.** O site leva ~1 min para atualizar."
+            echo ""
+            echo "<https://hubix-calendar.github.io/calendario-hubix/#${{ steps.gerar.outputs.chave }}>"
+            echo ""
+            echo "#### O que o sistema fez com a sua estratégia"
+            echo ""
+            cat <<'PLANO'
+          ${{ steps.gerar.outputs.plano }}
+          PLANO
+          } >> $GITHUB_STEP_SUMMARY

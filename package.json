@@ -1,0 +1,13 @@
+{
+  "name": "calendario-hubix",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Calendário editorial da HUBIX BPO Financeiro, com geração de novos meses via Claude.",
+  "scripts": {
+    "gerar-mes": "node scripts/gerar-mes.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.115.0"
+  }
+}

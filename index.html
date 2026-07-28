@@ -73,7 +73,13 @@
 
   /* calendar */
   .cal-card{background:var(--panel);border-radius:32px;box-shadow:var(--shadow);padding:18px;border:1px solid var(--line-2)}
-  .cal-month{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:6px 0 16px;padding-left:8px}
+  .cal-month{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:0;padding-left:8px}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:6px 0 16px;padding-right:4px}
+  .mes-nav{display:flex;gap:8px}
+  .mes-nav .icon-btn{font-size:20px;line-height:1;font-weight:700}
+  .icon-btn:disabled{opacity:.32;cursor:not-allowed}
+  .icon-btn:disabled:hover{color:var(--ink-2);border-color:var(--line)}
+  :focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:8px}
   .dow{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--line-2)}
   .dow span{text-align:center;font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.6px}
   .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
@@ -84,8 +90,11 @@
   .cell.has{cursor:pointer;border:1px solid var(--line)}
   .cell.has:hover{background:var(--panel);border-color:var(--brand)}
   .cell.has:hover .num{color:var(--brand)}
+  .cell.vazio{background:transparent;border-style:dashed}
+  .cell.vazio .num{color:var(--ink-3)}
   .cell .dots{display:flex;gap:5px;flex-wrap:wrap}
   .cell .dots i{width:9px;height:9px;border-radius:50%;display:block}
+  .cell .dots i.oco{background:transparent!important;box-shadow:inset 0 0 0 1.5px var(--ink-3)}
   .cell .status{position:absolute;top:9px;right:10px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;color:#fff;font-weight:800}
   .cell .status.ok{background:var(--ok)}
   .cell .status.no{background:var(--no)}
@@ -213,15 +222,15 @@
 <main class="page">
   <header class="hero">
     <div class="kicker">Calendário Editorial · BPO Financeiro</div>
-    <h1 class="display">Setembro 2026</h1>
+    <h1 class="display" id="heroMonth">Setembro 2026</h1>
     <p class="lead">Estratégia de aquisição para donos de mídia exterior. Toque num dia marcado para ver o conteúdo, o roteiro ou o briefing de design — e aprovar.</p>
   </header>
 
   <section class="stats">
-    <div class="stat-card"><p>Total de conteúdo</p><h3>22 peças</h3></div>
-    <div class="stat-card"><p>Mix de formatos</p><h3>4 formatos</h3></div>
-    <div class="stat-card"><p>Foco em vídeo</p><h3>6 reels</h3></div>
-    <div class="stat-card"><p>Direcionamento</p><h3>1 objetivo</h3></div>
+    <div class="stat-card"><p>Total de conteúdo</p><h3 id="stTotal">—</h3></div>
+    <div class="stat-card"><p>Mix de formatos</p><h3 id="stFormatos">—</h3></div>
+    <div class="stat-card"><p>Foco em vídeo</p><h3 id="stReels">—</h3></div>
+    <div class="stat-card"><p>Dias com post</p><h3 id="stDias">—</h3></div>
   </section>
 
   <div class="legend">
@@ -232,7 +241,13 @@
   </div>
 
   <div class="cal-card">
-    <h2 class="cal-month">Setembro</h2>
+    <div class="cal-head">
+      <h2 class="cal-month" id="calMonth">Setembro</h2>
+      <div class="mes-nav">
+        <button class="icon-btn" id="mesPrev" aria-label="Mês anterior">‹</button>
+        <button class="icon-btn" id="mesNext" aria-label="Próximo mês">›</button>
+      </div>
+    </div>
     <div class="dow"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
     <div class="grid" id="grid"></div>
   </div>
@@ -354,8 +369,10 @@
 const FMT={post:'Post',carrossel:'Carrossel',frase:'Frase',reel:'Reel'};
 const FCOLOR={post:'var(--post)',carrossel:'var(--carrossel)',frase:'var(--frase)',reel:'var(--reel)'};
 
-/* ---- DADOS ---- */
-const DATA={
+/* ---- DADOS: um bloco por mês ---- */
+/* ==== MESES:START · bloco mantido pelo script scripts/gerar-mes.mjs — NÃO remover estes marcadores ==== */
+const MESES={
+'2026-09':{nome:'Setembro',ano:2026,mes:9,dias:30,firstDow:2,feriados:{'07':'Independência'},data:{
  '01':{f:'reel',goal:'Atenção · dor',t:'3 sinais de que o financeiro da sua empresa de mídia está no vermelho',
    legenda:'Você fatura bem, mas no fim do mês some tudo? Talvez não seja falta de cliente — é falta de controle. Salve este vídeo. 👇 Comente "DIAGNÓSTICO" que a gente te mostra por onde começar.',
    tags:'#midiaexterior #outdoor #bpofinanceiro #fluxodecaixa #gestaofinanceira',
@@ -512,38 +529,85 @@ const DATA={
      cores:'Fundo escuro premium; texto branco; "agora" em roxo/azul.',
      elementos:'Pequeno "Setembro → Outubro". Logo HUBIX.',
      acao:'Design fecha o mês com peça de maior impacto tipográfico.'}}
+}}
 };
+/* ==== MESES:END ==== */
 
-/* ---- CALENDÁRIO ---- */
-const YEAR=2026, MONTH=9, DAYS=30, FIRST_DOW=2; // Set/2026, 1º = terça (Sun=0)
-const HOLIDAYS={'07':true};
+/* ---- CALENDÁRIO (multi-mês) ---- */
 const DOW_NAMES=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
 const grid=document.getElementById('grid');
+const CHAVES=Object.keys(MESES).sort();
+const hashInicial=decodeURIComponent(location.hash.slice(1));
+let MES=CHAVES.includes(hashInicial)?hashInicial:CHAVES[CHAVES.length-1];
+function M(){return MESES[MES]}
+function DATAM(){return M().data}
 
 function pad(n){return String(n).padStart(2,'0')}
-function dowOf(day){return (FIRST_DOW + (day-1))%7}
+function dowOf(day){return (M().firstDow + (day-1))%7}
 
-for(let i=0;i<FIRST_DOW;i++){
-  const e=document.createElement('div'); e.className='cell empty'; grid.appendChild(e);
-}
-for(let day=1;day<=DAYS;day++){
-  const key=pad(day);
-  const cell=document.createElement('div');
-  cell.className='cell day';
-  const item=DATA[key];
-  if(HOLIDAYS[key]) cell.classList.add('holiday');
-  let dots='';
-  if(item){
-    cell.classList.add('has'); cell.dataset.key=key;
-    dots=`<div class="dots"><i style="background:${FCOLOR[item.f]}"></i></div>`;
+function renderMes(){
+  const m=M(), data=m.data;
+  const itens=Object.values(data);
+  const porFormato={};
+  itens.forEach(i=>{porFormato[i.f]=(porFormato[i.f]||0)+1});
+
+  document.getElementById('heroMonth').textContent=`${m.nome} ${m.ano}`;
+  document.getElementById('calMonth').textContent=m.nome;
+  const preenchidas=itens.filter(i=>!i.vazio).length;
+  document.getElementById('stTotal').textContent=
+    preenchidas===itens.length ? itens.length+(itens.length===1?' peça':' peças')
+                               : `${preenchidas} de ${itens.length}`;
+  document.getElementById('stFormatos').textContent=Object.keys(porFormato).length+' formatos';
+  document.getElementById('stReels').textContent=(porFormato.reel||0)+' reels';
+  document.getElementById('stDias').textContent=itens.length+' dias';
+
+  grid.innerHTML='';
+  for(let i=0;i<m.firstDow;i++){
+    const e=document.createElement('div'); e.className='cell empty'; grid.appendChild(e);
   }
-  cell.innerHTML=`<span class="num">${day}</span>${dots}<div class="status-slot"></div>`;
-  if(item) cell.addEventListener('click',()=>openModal(key));
-  grid.appendChild(cell);
-}
+  for(let day=1;day<=m.dias;day++){
+    const key=pad(day);
+    const cell=document.createElement('div');
+    cell.className='cell day';
+    const item=data[key];
+    if(m.feriados&&m.feriados[key]) cell.classList.add('holiday');
+    let dots='';
+    if(item){
+      cell.classList.add('has'); cell.dataset.key=key;
+      if(item.vazio) cell.classList.add('vazio');
+      dots=item.vazio
+        ? `<div class="dots"><i class="oco"></i></div>`
+        : `<div class="dots"><i style="background:${FCOLOR[item.f]}"></i></div>`;
+    }
+    cell.innerHTML=`<span class="num">${day}</span>${dots}<div class="status-slot"></div>`;
+    if(item) cell.addEventListener('click',()=>openModal(key));
+    grid.appendChild(cell);
+  }
 
-/* ---- STATUS PERSISTÊNCIA ---- */
-function stKey(key){return 'hubix-set2026-'+key}
+  const idx=CHAVES.indexOf(MES);
+  const prev=document.getElementById('mesPrev'), next=document.getElementById('mesNext');
+  prev.disabled=idx<=0; next.disabled=idx>=CHAVES.length-1;
+  prev.title=idx>0?rotuloMes(CHAVES[idx-1]):'Nenhum mês anterior';
+  next.title=idx<CHAVES.length-1?rotuloMes(CHAVES[idx+1]):'Nenhum mês seguinte';
+
+  paintStatus();
+}
+function rotuloMes(k){return MESES[k]?`${MESES[k].nome} ${MESES[k].ano}`:k}
+function irPara(k){
+  if(!MESES[k]) return;
+  MES=k;
+  history.replaceState(null,'','#'+k);
+  renderMes();
+}
+document.getElementById('mesPrev').addEventListener('click',()=>{
+  const i=CHAVES.indexOf(MES); if(i>0) irPara(CHAVES[i-1]);
+});
+document.getElementById('mesNext').addEventListener('click',()=>{
+  const i=CHAVES.indexOf(MES); if(i<CHAVES.length-1) irPara(CHAVES[i+1]);
+});
+
+/* ---- STATUS PERSISTÊNCIA (por mês) ---- */
+function stKey(key){return 'hubix-'+MES+'-'+key}
 function getStatus(key){try{return JSON.parse(localStorage.getItem(stKey(key)))}catch(e){return null}}
 function setStatus(key,val){localStorage.setItem(stKey(key),JSON.stringify(val))}
 function paintStatus(){
@@ -559,7 +623,20 @@ function paintStatus(){
     }
   });
 }
-paintStatus();
+
+/* migração única: aprovações salvas antes do multi-mês viviam em hubix-set2026-* */
+(function migrarSet2026(){
+  if(localStorage.getItem('hubix-migrado-v2')) return;
+  for(let d=1;d<=31;d++){
+    const k=pad(d), antigo=localStorage.getItem('hubix-set2026-'+k);
+    if(antigo!==null&&localStorage.getItem('hubix-2026-09-'+k)===null){
+      localStorage.setItem('hubix-2026-09-'+k,antigo);
+    }
+  }
+  localStorage.setItem('hubix-migrado-v2','1');
+})();
+
+renderMes();
 
 /* ---- MODAL ---- */
 const overlay=document.getElementById('overlay');
@@ -574,14 +651,32 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
 
 function openModal(key){
   CUR=key;
-  const it=DATA[key];
+  const it=DATAM()[key];
   const day=parseInt(key,10);
-  mDate.textContent=`${day} de Setembro · ${DOW_NAMES[dowOf(day)]}`;
-  mBadge.textContent=FMT[it.f];
-  mBadge.style.background=FCOLOR[it.f];
-  mTitle.textContent=it.t;
-  mGoal.textContent=it.goal;
-  mGoal.style.color=FCOLOR[it.f];
+  mDate.textContent=`${day} de ${M().nome} · ${DOW_NAMES[dowOf(day)]}`;
+  mBadge.textContent=FMT[it.f]+(it.vazio?' · a preencher':'');
+  mBadge.style.background=it.vazio?'var(--ink-3)':FCOLOR[it.f];
+  mTitle.textContent=it.t||'Slot reservado';
+  mGoal.textContent=it.goal||`Espaço já na grade — falta escrever o conteúdo`;
+  mGoal.style.color=it.vazio?'var(--ink-3)':FCOLOR[it.f];
+
+  // slot vazio: mostra o que falta preencher e esconde aprovar/recusar
+  document.querySelector('.decision-row').style.display=it.vazio?'none':'';
+  if(it.vazio){
+    const campos = it.f==='reel'
+      ? [['Legenda','descrição do post + CTA'],['Roteiro','fala corrida para teleprompter'],['Hashtags','5 a 6 tags']]
+      : [['Legenda','texto do post + CTA'],['Briefing de design','formato, estilo, texto na arte, cores, elementos'],['Hashtags','5 a 6 tags']];
+    let h=`<div class="blk"><h4>Ainda não preenchido</h4><div class="content">Formato planejado: <b>${FMT[it.f]}</b>. Preencha em <code>index.html</code>, no bloco <code>'${MES}'</code> → dia <code>'${key}'</code>.</div></div>`;
+    h+=`<div class="blk"><h4>O que falta</h4>`;
+    campos.forEach(([k,v])=>{ h+=`<div class="dz"><div class="k">${k}</div><div class="v">${esc(v)}</div></div>`; });
+    h+=`</div>`;
+    mBody.innerHTML=h;
+    rejectBox.classList.remove('show');
+    statusNote.classList.remove('show'); statusNote.innerHTML='';
+    overlay.classList.add('show');
+    document.body.style.overflow='hidden';
+    return;
+  }
 
   let html='';
   // legenda / descrição do post
@@ -651,15 +746,19 @@ rejectSave.addEventListener('click',()=>{
   showNote('no',reason); paintStatus();
 });
 
-/* ---- BANCO DE APRENDIZADO ---- */
-const LKEY='hubix-learning-set2026';
+/* ---- BANCO DE APRENDIZADO (agregado, todos os meses) ---- */
+const LKEY='hubix-learning';
 function getLog(){try{return JSON.parse(localStorage.getItem(LKEY))||[]}catch(e){return[]}}
 function saveLog(a){localStorage.setItem(LKEY,JSON.stringify(a))}
+(function migrarLog(){
+  const antigo=localStorage.getItem('hubix-learning-set2026');
+  if(antigo&&!localStorage.getItem(LKEY)) localStorage.setItem(LKEY,antigo);
+})();
 function logLearning(key,reason){
   if(!reason) return;
-  const it=DATA[key];
+  const m=M(), it=m.data[key];
   const log=getLog();
-  log.unshift({dia:parseInt(key,10),data:parseInt(key,10)+'/09/2026',formato:FMT[it.f],titulo:it.t,motivo:reason,ts:Date.now()});
+  log.unshift({mes:MES,dia:parseInt(key,10),data:`${key}/${pad(m.mes)}/${m.ano}`,formato:FMT[it.f],titulo:it.t,motivo:reason,ts:Date.now()});
   saveLog(log); updateCnt();
 }
 function updateCnt(){

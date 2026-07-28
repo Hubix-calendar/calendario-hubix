@@ -1,0 +1,6 @@
+node_modules/
+.env
+_check.js
+
+# preview local do Claude Code, não faz parte do site publicado
+artifact-preview.html
