@@ -172,15 +172,40 @@ const SCHEMA = {
       items: {
         type: 'object',
         additionalProperties: false,
-        required: ['dia', 'f', 'goal', 't', 'legenda', 'tags', 'roteiro', 'design'],
+        required: ['dia', 'f', 'funil', 'goal', 't', 'objetivo', 'legenda', 'cta', 'tags', 'stories', 'conexao', 'roteiro', 'producao', 'design'],
         properties: {
-          dia: { type: 'integer', description: 'Dia do mês. Um post por dia, apenas em dias úteis.' },
+          dia: { type: 'integer', description: 'Dia do mês em que a peça vai ao ar.' },
           f: { type: 'string', enum: ['post', 'carrossel', 'frase', 'reel'], description: 'Formato da peça' },
-          goal: S('Objetivo curto no formato "Etapa · tema". Ex.: "Atenção · dor"'),
+          funil: { type: 'string', enum: ['Atração', 'Consideração', 'Conversão', 'Relacionamento'], description: 'Etapa do funil' },
+          goal: S('Objetivo curto no formato "Etapa · tema". Ex.: "Consideração · prova social"'),
           t: S('Título interno da peça (aparece no calendário)'),
-          legenda: S('Legenda do post, pronta para publicar, com CTA'),
+          objetivo: S('2 a 4 linhas: o que esta peça precisa alcançar e por que ela está nesta data'),
+          legenda: S('Legenda do post, pronta para publicar. Use \\n para quebras de linha'),
+          cta: S('A chamada para ação, em uma frase'),
           tags: S('Hashtags separadas por espaço, começando com #'),
+          stories: {
+            type: 'array',
+            description: '2 a 3 stories complementares. Ex.: "Story 1: enquete — ... | SIM / NÃO"',
+            items: { type: 'string' },
+          },
+          conexao: {
+            type: 'object', additionalProperties: false, required: ['de', 'para'],
+            description: 'Lugar da peça na narrativa do mês',
+            properties: {
+              de: S('O que veio antes e como esta peça se conecta com aquilo'),
+              para: S('O que vem depois e como esta peça prepara o terreno'),
+            },
+          },
           roteiro: S('SOMENTE se f="reel": texto corrido para teleprompter, só a fala, sem marcações de cena. Para os outros formatos, string vazia ""'),
+          producao: {
+            type: 'object', additionalProperties: false, required: ['corpo', 'edicao', 'thumb'],
+            description: 'SOMENTE se f="reel". Para os outros formatos, todos os campos como string vazia "".',
+            properties: {
+              corpo: S('Enquadramento, linguagem corporal, tom e duração ideal'),
+              edicao: S('Ambiente, iluminação, áudio, textos em tela, legendas, cortes'),
+              thumb: S('Descrição da thumbnail: expressão, texto sobreposto, fundo, formato'),
+            },
+          },
           design: {
             type: 'object',
             additionalProperties: false,
@@ -264,7 +289,8 @@ Monte o calendário editorial de Instagram de **${nomeMes} de ${ano}**.
 - Feriados nacionais: ${feriados.length ? feriados.map((f) => `${f.dia} (${f.nome})`).join(', ') : 'nenhum'}.
 
 ## Regras obrigatórias
-1. **Formato dos campos.** Reel (\`f: "reel"\`) → preencha \`roteiro\` com a fala em **texto corrido**, pronta para teleprompter: só o que a pessoa fala, sem "CENA 1", sem corte, sem descrição de imagem; deixe todos os campos de \`design\` vazios. Post, carrossel e frase → preencha \`design\` completo e deixe \`roteiro\` vazio.
+1. **Formato dos campos.** Reel (\`f: "reel"\`) → preencha \`roteiro\` com a fala em **texto corrido**, pronta para teleprompter (só o que a pessoa fala: sem "CENA 1", sem corte, sem descrição de imagem) **e** \`producao\` com enquadramento, edição e thumbnail; deixe todos os campos de \`design\` vazios. Post, carrossel e frase → preencha \`design\` completo e deixe \`roteiro\` e \`producao\` vazios.
+1b. **Toda peça, sem exceção**, leva \`objetivo\`, \`funil\`, \`cta\`, \`stories\` e \`conexao\` preenchidos. \`conexao\` amarra a peça na narrativa: de onde ela vem e o que ela prepara. Em carrossel, \`design.texto\` traz **slide a slide** (CAPA, S2, S3… e o slide de CTA).
 2. Um dia não pode aparecer duas vezes. Todo dia usado tem que existir no mês (1 a ${cal.dias}).
 3. Se um feriado cair num dia com conteúdo, a peça daquele dia conversa com a data — de forma sóbria, sem clichê. Preencha também o campo \`feriados\` da resposta.
 4. **Nunca invente números, percentuais ou resultados de clientes.** Se uma peça pedir um dado real (case, redução de inadimplência, economia), escreva literalmente \`[INSERIR NÚMERO REAL]\` no lugar do número — na legenda e no briefing.
@@ -331,11 +357,19 @@ function montarObjetoMes({ nomeMes, ano, mes, cal, feriados, pecas, vazio }) {
   for (const p of pecas.sort((a, b) => a.dia - b.dia)) {
     const item = vazio
       ? { vazio: 1, f: p.f, goal: '', t: '', legenda: '', tags: '' }
-      : { f: p.f, goal: p.goal, t: p.t, legenda: p.legenda, tags: p.tags };
-    if (p.f === 'reel') item.roteiro = vazio ? '' : p.roteiro;
-    else item.design = vazio
-      ? { formato: '', estilo: '', texto: '', cores: '', elementos: '', acao: '' }
-      : p.design;
+      : {
+        f: p.f, funil: p.funil, goal: p.goal, t: p.t,
+        objetivo: p.objetivo, legenda: p.legenda, cta: p.cta, tags: p.tags,
+        stories: p.stories || [], conexao: p.conexao || { de: '', para: '' },
+      };
+    if (p.f === 'reel') {
+      item.roteiro = vazio ? '' : p.roteiro;
+      if (!vazio && p.producao) item.producao = p.producao;
+    } else {
+      item.design = vazio
+        ? { formato: '', estilo: '', texto: '', cores: '', elementos: '', acao: '' }
+        : p.design;
+    }
     data[String(p.dia).padStart(2, '0')] = item;
   }
   const fer = {};
@@ -396,8 +430,9 @@ function montarMarkdown({ chave, objMes }) {
       (feriado ? ` · 🇧🇷 ${feriado}` : ''));
     L.push('');
     L.push(`**${ph(it.t, 'título da peça')}**  `);
-    L.push(`_${ph(it.goal, 'objetivo, ex.: "Atenção · dor"')}_`);
+    L.push(`_${ph(it.goal, 'objetivo, ex.: "Atenção · dor"')}_` + (it.funil ? ` · **${it.funil}**` : ''));
     L.push('');
+    if (it.objetivo) { L.push('> ' + it.objetivo.replace(/\n/g, '\n> ')); L.push(''); }
     L.push('**Legenda**');
     L.push('');
     L.push(ph(it.legenda, 'texto do post + CTA'));
@@ -406,6 +441,15 @@ function montarMarkdown({ chave, objMes }) {
       L.push('**Roteiro (teleprompter)**');
       L.push('');
       L.push(ph(it.roteiro, 'fala corrida, sem marcação de cena'));
+      L.push('');
+    }
+    if (it.producao) {
+      L.push('**Gravação e edição**');
+      L.push('');
+      for (const [k, v] of [['Corpo e enquadramento', it.producao.corpo],
+        ['Produção e edição', it.producao.edicao], ['Thumbnail', it.producao.thumb]]) {
+        if (v) { L.push(`- **${k}:** ${v}`); }
+      }
       L.push('');
     }
     if (it.design) {
@@ -427,8 +471,20 @@ function montarMarkdown({ chave, objMes }) {
       }
       L.push('');
     }
+    if (it.cta) { L.push(`**CTA:** ${it.cta}`); L.push(''); }
     L.push(it.tags && it.tags.trim() ? `\`${it.tags}\`` : '_(preencher: 5 a 6 hashtags)_');
     L.push('');
+    if (it.stories && it.stories.length) {
+      L.push('**Stories**');
+      L.push('');
+      it.stories.forEach((s) => L.push(`- ${s}`));
+      L.push('');
+    }
+    if (it.conexao && (it.conexao.de || it.conexao.para)) {
+      if (it.conexao.de) L.push(`_Vem de:_ ${it.conexao.de}  `);
+      if (it.conexao.para) L.push(`_Prepara:_ ${it.conexao.para}`);
+      L.push('');
+    }
     L.push('---');
     L.push('');
   }
@@ -549,9 +605,13 @@ async function main() {
     const pecasMock = cal.uteis.slice(0, base.length).map((u, i) => {
       const b = base[i];
       return {
-        dia: u.dia, f: b.f, goal: b.goal, t: '[MOCK] ' + b.t,
-        legenda: b.legenda, tags: b.tags,
+        dia: u.dia, f: b.f, funil: b.funil || 'Consideração', goal: b.goal, t: '[MOCK] ' + b.t,
+        objetivo: b.objetivo || '[MOCK] objetivo da peça',
+        legenda: b.legenda, cta: b.cta || '[MOCK] chamada para ação', tags: b.tags,
+        stories: b.stories && b.stories.length ? b.stories : ['[MOCK] Story 1'],
+        conexao: b.conexao || { de: '[MOCK] anterior', para: '[MOCK] próximo' },
         roteiro: b.roteiro || '',
+        producao: b.producao || (b.roteiro ? { corpo: '[MOCK] enquadramento', edicao: '[MOCK] edição', thumb: '[MOCK] thumb' } : { corpo: '', edicao: '', thumb: '' }),
         design: b.design || { formato: '', estilo: '', texto: '', cores: '', elementos: '', acao: '' },
       };
     });
@@ -633,8 +693,12 @@ function gravar({ chave, nomeMes, ano, mes, cal, feriados, pecas, usage, vazio }
     if (!uteisSet.has(p.dia)) avisos.push(`dia ${p.dia} cai em fim de semana`);
     if (vazio) continue; // slot reservado: só a grade importa
     if (p.f === 'reel' && !p.roteiro.trim()) problemas.push(`dia ${p.dia}: reel sem roteiro`);
+    if (p.f === 'reel' && !(p.producao && p.producao.corpo.trim())) problemas.push(`dia ${p.dia}: reel sem orientação de gravação`);
     if (p.f !== 'reel' && !p.design.formato.trim()) problemas.push(`dia ${p.dia}: ${p.f} sem briefing de design`);
     if (!p.legenda.trim() || !p.t.trim()) problemas.push(`dia ${p.dia}: título ou legenda vazios`);
+    if (!p.objetivo.trim()) problemas.push(`dia ${p.dia}: sem objetivo`);
+    if (!p.cta.trim()) problemas.push(`dia ${p.dia}: sem CTA`);
+    if (!p.stories || !p.stories.length) problemas.push(`dia ${p.dia}: sem stories`);
   }
   if (!pecas.length) problemas.push('nenhuma peça na resposta');
   if (problemas.length) {

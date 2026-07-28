@@ -122,6 +122,15 @@
   .m-head{padding:18px 26px 14px;border-bottom:1px solid var(--line-2);position:sticky;top:0;background:var(--panel);z-index:2}
   .m-date{font-size:13px;color:var(--ink-2);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
   .m-badge{float:right;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#fff;padding:4px 11px;border-radius:100px}
+  .m-badge.alt{background:transparent;color:var(--ink-3);border:1px solid var(--line);margin-right:6px}
+  .m-badge.alt:empty{display:none}
+  .blk .objetivo{font-size:14px;line-height:1.6;color:var(--ink-2);background:var(--panel-2);border-left:3px solid var(--brand);border-radius:0 10px 10px 0;padding:12px 14px}
+  .blk .cta-box{font-size:14.5px;font-weight:600;color:var(--brand);background:color-mix(in srgb,var(--brand) 8%,transparent);border-radius:12px;padding:12px 14px}
+  .blk ul.stories{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink-2);line-height:1.75}
+  .blk .conexao{display:grid;gap:10px;grid-template-columns:1fr 1fr;font-size:13px}
+  @media (max-width:520px){.blk .conexao{grid-template-columns:1fr}}
+  .blk .conexao div{background:var(--panel-2);border-radius:10px;padding:10px 12px;color:var(--ink-2)}
+  .blk .conexao b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-3);margin-bottom:4px}
   .m-title{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:8px 0 4px}
   .m-goal{font-size:13px;font-weight:600}
   .m-body{padding:20px 26px 8px}
@@ -346,6 +355,7 @@
     <div class="m-head">
       <span class="m-date" id="mDate"></span>
       <span class="m-badge" id="mBadge"></span>
+      <span class="m-badge alt" id="mFunil"></span>
       <h3 class="m-title" id="mTitle"></h3>
       <div class="m-goal" id="mGoal"></div>
     </div>
@@ -530,6 +540,429 @@ const MESES={
      elementos:'Pequeno "Setembro → Outubro". Logo HUBIX.',
      acao:'Design fecha o mês com peça de maior impacto tipográfico.'}}
 }}
+,
+'2026-07':{
+ "nome": "Julho",
+ "ano": 2026,
+ "mes": 7,
+ "dias": 31,
+ "firstDow": 3,
+ "feriados": {
+  "16": "Dia do Comerciante",
+  "20": "Dia do Amigo"
+ },
+ "data": {
+  "16": {
+   "f": "reel",
+   "funil": "Atração",
+   "goal": "Atração · data + educação",
+   "t": "Dia do Comerciante: os 3 números que separam quem cresce de quem estagnou",
+   "objetivo": "Abrir o calendário de julho com impacto máximo, aproveitando o Dia do Comerciante. Provocar reflexão sobre o resultado do semestre e apresentar os 3 números essenciais que todo empresário deveria acompanhar. Um único Reels que cumpre dois papéis: data comemorativa + educação.",
+   "roteiro": "Hoje é Dia do Comerciante. E o presente mais honesto que eu posso te dar é uma pergunta: você sabe quanto sua empresa lucrou no primeiro semestre? Não quanto faturou. Quanto lucrou. Se a resposta demorou mais de cinco segundos, a gente tem algo importante pra conversar. Existem três números que todo empresário deveria olhar toda semana — e que a maioria ignora. Número um: margem de contribuição. Quanto sobra de cada venda depois dos custos variáveis. Sem esse número, você não sabe se está lucrando ou só girando dinheiro. Número dois: fluxo de caixa projetado. Não o que entrou — o que vai entrar e o que vai sair. Isso te diz se você vai ter dinheiro pra pagar as contas no mês que vem. Número três: inadimplência real. Quanto do seu faturamento ainda não existe de verdade. Muitos empresários constroem o resultado em cima de dinheiro que nunca vai entrar. Esses três números mudam a forma como você decide. Na HUBIX, a gente organiza exatamente isso. Feliz Dia do Comerciante. Link na bio pra conversar com a gente.",
+   "producao": {
+    "corpo": "Busto para cima, câmera na altura dos olhos. No gancho, leve inclinação à frente — como quem vai contar algo importante. Contato visual direto com a câmera o tempo todo. Mãos levantam os dedos para contar 1, 2, 3 nos momentos certos. Pausas reais: deixar a informação assentar antes de continuar. Tom de conversa franca, não palestra. Duração ideal: 55 a 70 segundos.",
+    "edicao": "Ambiente: escritório da HUBIX ou fundo neutro escuro. Iluminação frontal suave, sem sombras duras. Áudio de lapela ou direcional — voz limpa é prioridade. Sobrepor os números 1, 2 e 3 em tela nos momentos certos. Legenda automática ativada (muitos assistem sem som). Cortes no ritmo das pausas, sem efeitos excessivos.",
+    "thumb": "Diego olhando diretamente para a câmera, expressão séria e próxima. Texto sobreposto: \"Dia do Comerciante — você sabe quanto lucrou no semestre?\". Fundo escuro (azul-marinho ou preto), fonte bold branca, logo HUBIX no canto. Formato Reels vertical 1080×1920px."
+   },
+   "legenda": "Dia do Comerciante. 16 de julho.\n\nO presente mais honesto que a HUBIX pode te dar hoje: três números que todo empresário deveria acompanhar toda semana.\n\n1. Margem de contribuição — quanto sobra de cada venda\n2. Fluxo de caixa projetado — o que vai entrar e sair\n3. Inadimplência real — quanto do faturamento ainda não existe\n\nQuem acompanha esses três decide diferente.\nQuem ignora, descobre tarde demais.\n\nSalva esse vídeo. Compartilha com quem precisa.\n\nLink na bio.",
+   "cta": "Salva o vídeo. Link na bio para conversar com a HUBIX.",
+   "tags": "#diadocomerciante #gestaofinanceira #bpofinanceiro #hubix #indicadoresfinanceiros #fluxodecaixa #margem #inadimplencia #empreendedorismo #pme",
+   "stories": [
+    "Story 1: trecho de 10s do Reels com \"Arrasta pra ver o vídeo completo\"",
+    "Story 2: enquete — \"Você sabe quanto sua empresa lucrou no 1º semestre?\" | SIM / NÃO",
+    "Story 3: Diego responde a enquete em vídeo de 10s"
+   ],
+   "conexao": {
+    "de": "Abre o calendário. Primeiro post do período.",
+    "para": "Sábado: frase de autoridade consolidando a mensagem do semestre."
+   }
+  },
+  "18": {
+   "f": "frase",
+   "funil": "Atração",
+   "goal": "Atração · autoridade",
+   "t": "Faturamento x Lucro x Caixa",
+   "objetivo": "Frase poderosa e compartilhável para consolidar o tema da semana. Alta taxa de salvamento e compartilhamento. Sem produção complexa.",
+   "design": {
+    "formato": "Post quadrado · 1080×1080px",
+    "estilo": "Sóbrio, elegante, compartilhável. Estética de revista financeira. Minimalismo total — nenhuma imagem, só texto e identidade.",
+    "texto": "Faturamento impressiona.\nLucro sustenta.\nFluxo de caixa garante.\n\n(linha separadora fina horizontal)\n\nGestão financeira não é sobre escolher um desses.\nÉ sobre entender os três ao mesmo tempo.\n\n— Diego | HUBIX",
+    "cores": "Fundo em gradiente escuro — preto para azul-marinho profundo (#1A1A2E). As três primeiras linhas em branco, fonte regular. Segunda parte em cinza claro, corpo menor.",
+    "elementos": "Linha separadora fina entre os dois blocos. Assinatura \"— Diego | HUBIX\" discreta no canto inferior. Logo HUBIX discreta no canto.",
+    "acao": "Compor só com tipografia. O peso vem do contraste entre as três afirmações curtas e o fechamento explicativo."
+   },
+   "legenda": "Três conceitos que muitos empresários confundem a vida toda.\n\nFaturamento é vaidade se não houver margem.\nLucro é ilusão se o caixa não confirmar.\nE caixa é temporário se não houver previsão.\n\nA HUBIX trabalha exatamente na intersecção desses três pontos.\n\nSalva esse post. Compartilha com seu sócio.",
+   "cta": "Salva e compartilha com seu sócio.",
+   "tags": "#gestaofinanceira #hubix #bpofinanceiro #lucro #fluxodecaixa #faturamento #empreendedorismo #mentalidadeempresarial #financasempresariais #pme",
+   "stories": [
+    "Story 1: repost do post com caixa de perguntas",
+    "Story 2: \"Qual dos três você mais negligencia na sua empresa?\" | Faturamento / Lucro / Caixa",
+    "Story 3: Diego comenta o resultado em vídeo de 10s"
+   ],
+   "conexao": {
+    "de": "Quinta: Reels com os 3 indicadores e Dia do Comerciante.",
+    "para": "Segunda (Dia do Amigo): humanização da marca, paralelo com parceiro financeiro."
+   }
+  },
+  "20": {
+   "f": "post",
+   "funil": "Relacionamento",
+   "goal": "Relacionamento · humanização",
+   "t": "O parceiro financeiro que todo empresário deveria ter",
+   "objetivo": "Usar o Dia do Amigo para humanizar a HUBIX e criar conexão emocional com o empresário. Encerrar a semana com leveza sem perder posicionamento.",
+   "design": {
+    "formato": "Post quadrado · 1080×1080px",
+    "estilo": "Mais caloroso e humano do que os outros posts. Mantém a elegância da marca.",
+    "texto": "No Dia do Amigo, a gente pensa nos parceiros que fazem diferença.\n\nAquele que diz a verdade quando você não quer ouvir.\nQue aparece quando a situação está difícil.\nQue te ajuda a enxergar o que você não está conseguindo ver sozinho.\n\nPara muitos empresários que trabalham com a HUBIX,\na gente tem sido esse parceiro nos números.\n\nFeliz Dia do Amigo.",
+    "cores": "Fundo azul médio ou gradiente suave azul/branco — mais caloroso que os posts anteriores.",
+    "elementos": "Dois ícones sutis representando parceria — aperto de mão ou dois círculos conectados. Minimalista. Logo HUBIX presente e discreta.",
+    "acao": "Fonte leve no texto principal, com \"parceiro nos números\" em leve destaque."
+   },
+   "legenda": "Ter um parceiro de confiança na vida pessoal é raro e valioso.\n\nNa gestão financeira da empresa, deveria ser o mesmo.\n\nAlguém que conhece os seus números. Que te diz quando o caixa vai apertar antes de você sentir. Que organiza o que está bagunçado sem te julgar pelo que aconteceu antes.\n\nNa HUBIX, a gente não faz julgamento. A gente faz gestão.\n\nFeliz Dia do Amigo.\n\nMarca aquele amigo empresário que precisa de mais controle financeiro.",
+   "cta": "Marca aquele amigo empresário que precisa de controle financeiro nos comentários.",
+   "tags": "#diadoamigo #hubix #bpofinanceiro #gestaofinanceira #parceiro #empreendedorismo #financasempresariais #pme",
+   "stories": [
+    "Story 1: repost do post",
+    "Story 2: caixa de perguntas — \"Você tem alguém de confiança cuidando das finanças da sua empresa?\"",
+    "Story 3: Diego responde algumas respostas com comentário rápido"
+   ],
+   "conexao": {
+    "de": "Sábado: frase de autoridade. Hoje encerramos com humanização.",
+    "para": "Quinta (Semana 2): carrossel sobre crescimento real vs ilusão."
+   }
+  },
+  "23": {
+   "f": "carrossel",
+   "funil": "Consideração",
+   "goal": "Consideração · conteúdo âncora",
+   "t": "Sua empresa está crescendo ou só faturando mais?",
+   "objetivo": "Provocar reflexão sobre a diferença entre crescimento real e ilusão de crescimento. Alto potencial de salvamento. Conteúdo âncora da semana.",
+   "design": {
+    "formato": "Carrossel quadrado · 5 slides · 1080×1080px",
+    "estilo": "Contraste visual entre os slides positivo e negativo cria tensão narrativa e mantém o ritmo de leitura.",
+    "texto": "CAPA — \"Sua empresa está crescendo… ou só faturando mais?\" / \"(tem diferença.)\"\n\nS2 — Crescimento real é quando: a margem sobe junto com o faturamento · o caixa fica mais sólido ao longo do tempo · a empresa depende menos do dono para funcionar · as decisões são tomadas com base em dados\n\nS3 — Ilusão de crescimento é quando: o faturamento sobe mas o lucro some · você vende mais, trabalha mais e o dinheiro não sobra · o caixa aperta todo mês mesmo com movimento · você decide na intuição porque os números não estão claros\n\nS4 — A diferença entre os dois: não é sorte. Não é mercado. Não é o tamanho da empresa. É gestão.\n\nS5 (CTA) — A HUBIX organiza isso. Para que você pare de adivinhar e comece a decidir com clareza. Fale com a gente. Link na bio.",
+    "cores": "Capa em azul-marinho escuro com título branco bold e subtítulo em azul claro. S2 fundo branco, marcadores verdes, fonte escura. S3 fundo cinza claro, marcadores vermelhos. S4 fundo azul escuro com \"É gestão.\" em destaque grande branco. S5 fundo azul HUBIX (#1565C0), texto branco.",
+    "elementos": "Ícone de seta para cima no S2, ícone de alerta sutil no S3, botão visual de CTA no S5. Logo em todos os slides, canto superior direito, na versão adequada ao fundo.",
+    "acao": "Criar template reutilizável para os slides de lista (S2 e S3), invertendo só a paleta e os marcadores."
+   },
+   "legenda": "Faturamento é o que todos comemoram.\nLucro é o que poucos conseguem explicar.\n\nSe você não sabe a diferença entre crescimento real e crescimento aparente, você não está no controle — mesmo que pareça que está.\n\nSalva esse carrossel. Compartilha com seu sócio.\n\nLink na bio para conversar com a HUBIX.",
+   "cta": "Salva e compartilha com seu sócio. Link na bio.",
+   "tags": "#crescimentoempresarial #gestaofinanceira #bpofinanceiro #hubix #lucro #faturamento #empreendedorismo #pme #fluxodecaixa #decisao",
+   "stories": [
+    "Story 1: repost do carrossel com \"Arrasta pra ver — isso é pro seu sócio ver também\"",
+    "Story 2: enquete — \"Sua empresa está em crescimento real ou ilusão?\" | REAL / NÃO SEI",
+    "Story 3: Diego responde com dado real de quantas empresas chegam à HUBIX em ilusão"
+   ],
+   "conexao": {
+    "de": "Semana 1 falou do semestre e dos números. Hoje aprofundamos o que esses números revelam.",
+    "para": "Sábado: frase de autoridade provocativa sobre o que é ser empresário de verdade."
+   }
+  },
+  "25": {
+   "f": "frase",
+   "funil": "Atração",
+   "goal": "Atração · provocação",
+   "t": "Empresário x trabalhador autônomo com CNPJ",
+   "objetivo": "Frase provocativa e compartilhável para encerrar a semana com autoridade máxima. Deve gerar desconforto produtivo e motivar salvamentos.",
+   "design": {
+    "formato": "Post quadrado ou retrato · 1080×1080 ou 1080×1350px",
+    "estilo": "Provocativo, premium, sem imagem. Só texto e força. O mais impactante da semana.",
+    "texto": "Empresário que não lê balanço\nnão é empreendedor.\n\nÉ trabalhador autônomo com CNPJ.\n\n— Diego | HUBIX",
+    "cores": "Fundo preto sólido ou azul muito escuro, contraste máximo. \"Empresário que não lê balanço\" em branco regular, \"não é empreendedor.\" em branco bold e grande, \"É trabalhador autônomo com CNPJ.\" em itálico numa cor de destaque (azul claro ou dourado).",
+    "elementos": "Assinatura \"— Diego | HUBIX\" menor, no canto inferior. Sem imagem, sem ornamento.",
+    "acao": "Toda a força vem da hierarquia tipográfica. Quebrar a frase exatamente nos três blocos indicados."
+   },
+   "legenda": "Duro? Sim.\nVerdadeiro? Também.\n\nEmpreender é construir algo que funciona com ou sem você. E isso começa quando você para de ser o único que resolve e começa a gerenciar com base em números.\n\nSalva esse post. Compartilha com quem precisa.",
+   "cta": "Salva. Compartilha com quem precisa ouvir isso.",
+   "tags": "#empreendedorismo #gestaofinanceira #hubix #bpofinanceiro #mentalidadeempresarial #empresario #pme #crescimentoempresarial",
+   "stories": [
+    "Story 1: repost com caixa de reações",
+    "Story 2: Diego em vídeo de 10s — \"Esse post vai incomodar muita gente. É pra isso que serve.\""
+   ],
+   "conexao": {
+    "de": "Quinta: diferença entre crescimento real e ilusão. Hoje: a provocação que fecha a semana.",
+    "para": "Segunda: alerta sobre o prazo da ECF — urgência fiscal."
+   }
+  },
+  "27": {
+   "f": "carrossel",
+   "funil": "Consideração",
+   "goal": "Consideração · urgência fiscal",
+   "t": "31 de julho: prazo da ECF. Sua empresa está pronta?",
+   "objetivo": "Alertar sobre o prazo da ECF (31/07) e a importância de ter dados organizados. Conteúdo de oportunidade fiscal com alto valor prático. Posiciona a HUBIX como solução antes e depois do prazo.",
+   "design": {
+    "formato": "Carrossel quadrado · 5 slides · 1080×1080px",
+    "estilo": "Narrativa em três atos: urgência → problema → solução. Ritmo acelerado.",
+    "texto": "CAPA — 31 de julho. Prazo da ECF. Sua empresa está pronta?\n\nS2 — O que é a ECF? Escrituração Contábil Fiscal: a declaração anual do Imposto de Renda para empresas de Lucro Presumido e Lucro Real. Prazo: último dia útil de julho — 31/07/2026.\n\nS3 — O que acontece com quem atrasa? Multa de R$ 500 a R$ 1.500 por mês em atraso · bloqueio de certidão negativa · restrição a linhas de crédito · maior exposição à fiscalização\n\nS4 — Por que muitos não estão prontos? A correria de julho é consequência da falta de processo nos outros 11 meses. Dados desorganizados ao longo do ano viram emergência fiscal em julho.\n\nS5 (CTA) — A HUBIX evita essa correria. Com os dados organizados o ano inteiro, você chega em julho com tudo pronto. Agosto começa em 3 dias. A melhor hora de mudar é agora. Link na bio.",
+    "cores": "Capa em vermelho escuro ou laranja escuro (urgência) com texto branco bold. S2 fundo branco com destaque na data 31/07. S3 fundo cinza claro com ícone de alerta vermelho em cada item. S4 fundo azul escuro, texto branco. S5 fundo azul HUBIX.",
+    "elementos": "Ícone de alerta vermelho nos itens do S3. Logo presente em todos os slides. CTA claro no S5.",
+    "acao": "Manter a progressão de cor do vermelho ao azul HUBIX — ela carrega a narrativa sozinha."
+   },
+   "legenda": "31 de julho. Prazo da ECF.\n\nQuem tinha os dados organizados entregou em dia e nem sentiu.\nQuem não tinha, viveu a correria — ou vai pagar a multa.\n\nA diferença não é o contador. É o processo ao longo do ano.\n\nAgosto começa em 3 dias. A melhor hora para mudar isso é agora.\n\nLink na bio.",
+   "cta": "Agosto começa em 3 dias. Fale com a HUBIX agora. Link na bio.",
+   "tags": "#ecf #irpj #obrigacoesfiscais #bpofinanceiro #hubix #gestaofinanceira #prazo #impostos #lucropresumido #organizacaofinanceira",
+   "stories": [
+    "Story 1: capa com adesivo de contagem regressiva até 31/07",
+    "Story 2: enquete — \"Sua empresa já está com a ECF pronta?\" | SIM / AINDA NÃO",
+    "Story 3: link direto para contato com a HUBIX"
+   ],
+   "conexao": {
+    "de": "Sábado: frase de impacto sobre controle. Hoje: consequência real de não ter controle.",
+    "para": "Quinta (Semana 3): por que o caixa aperta mesmo faturando bem."
+   }
+  },
+  "29": {
+   "f": "reel",
+   "funil": "Consideração",
+   "goal": "Consideração · técnico acessível",
+   "t": "Por que o caixa aperta mesmo quando você está vendendo bem?",
+   "objetivo": "Explicar por que o caixa aperta mesmo faturando bem. Conteúdo técnico apresentado de forma acessível. Alto potencial de compartilhamento — muitos empresários vivem isso e não entendem o porquê.",
+   "roteiro": "Você pode faturar muito bem e ainda assim quebrar. Deixa eu te explicar por quê. Existe um conceito chamado ciclo financeiro. É o tempo que passa entre você gastar pra produzir e o dinheiro entrar de volta no caixa. Se você vende com prazo de trinta, sessenta, noventa dias, mas seus fornecedores cobram à vista ou em quinze dias, você fica no negativo no meio do caminho. Mesmo vendendo bem. Mesmo com pedidos na carteira. Some a isso o custo fixo que não para: aluguel, folha, impostos — tudo vence todo mês, independente de quando o cliente paga. Aí o empresário pensa que o problema é falta de venda, quando na verdade é falta de capital de giro bem gerido. A solução não é vender mais. É entender o seu ciclo financeiro e planejar o caixa com antecedência. Na HUBIX, a gente faz exatamente esse trabalho. Link na bio.",
+   "producao": {
+    "corpo": "Tom explicativo e paciente — como professor que respeita o aluno. Mãos ilustram o \"vai e vem\" do dinheiro, entrada e saída. Câmera busto para cima, postura tranquila e aberta. Duração: 60 a 75 segundos — o conteúdo justifica mais tempo.",
+    "edicao": "Gráfico simples animado mostrando o ciclo: entrada → saída → gap. Texto na tela \"Ciclo Financeiro\" quando Diego mencionar o conceito. Legenda automática ativa. Cortes limpos entre os blocos, sem efeitos.",
+    "thumb": "Diego com expressão de quem vai revelar algo importante. Texto: \"Você pode faturar bem e ainda assim quebrar. Saiba por quê.\" Fundo escuro, fonte bold branca, logo HUBIX. Formato Reels vertical 1080×1920px."
+   },
+   "legenda": "Faturamento alto. Caixa apertado. Parece contradição?\n\nNão é. É ciclo financeiro mal gerido.\n\nVocê gasta pra produzir antes.\nO cliente paga depois.\nO custo fixo não espera nenhum dos dois.\n\nA solução não é vender mais. É planejar melhor.\n\nSalva esse vídeo. Compartilha com quem está nessa situação agora.\n\nLink na bio.",
+   "cta": "Salva o vídeo. Link na bio.",
+   "tags": "#capitaldegiro #fluxodecaixa #gestaofinanceira #hubix #ciclofinanceiro #caixa #bpofinanceiro #empreendedorismo #pme #planejamento",
+   "stories": [
+    "Story 1: trecho de 10s do Reels — o gancho",
+    "Story 2: enquete — \"Você já sentiu o caixa apertar mesmo faturando bem?\" | SIM / NÃO",
+    "Story 3: Diego responde com dado — [INSERIR NÚMERO REAL]% das empresas que chegam pra gente vivem isso"
+   ],
+   "conexao": {
+    "de": "Semana 2 fechou com urgência fiscal. Hoje explicamos a causa técnica do problema de caixa.",
+    "para": "Sábado: agosto começa — post de abertura do mês com dados vs esperança."
+   }
+  }
+ }
+}
+,
+'2026-08':{
+ "nome": "Agosto",
+ "ano": 2026,
+ "mes": 8,
+ "dias": 31,
+ "firstDow": 6,
+ "feriados": {
+  "12": "Dia Internacional da Juventude",
+  "09": "Dia dos Pais"
+ },
+ "data": {
+  "10": {
+   "f": "reel",
+   "funil": "Consideração",
+   "goal": "Consideração · prova social",
+   "t": "O empresário que faturava R$ 500 mil por mês e não sabia o lucro",
+   "objetivo": "Contar um caso real anonimizado para gerar credibilidade e identificação. Pós-Dia dos Pais — volta ao modo estratégico com narrativa concreta.",
+   "roteiro": "Vou te contar um caso real. Uma empresa que faturava quinhentos mil reais por mês e não sabia quanto estava lucrando. Quando chegou pra HUBIX, o empresário achava que ia bem. Faturamento alto, clientes bons, equipe funcionando. Mas o caixa nunca sobrava, e ele não entendia por quê. A gente começou pelo básico: separar os centros de custo, identificar a margem real de cada produto e montar o demonstrativo de resultado. O que apareceu deixou ele em silêncio por alguns minutos. Tinha uma linha de produto que consumia caixa sem gerar margem suficiente. Toda vez que vendia mais dessa linha, perdia mais. E quanto mais a empresa crescia, mais ficava no negativo. Com os números na mão, a decisão foi simples: reformular a precificação e cortar o que não rentabilizava. Em três meses, o lucro real apareceu pela primeira vez. Isso só foi possível porque alguém parou para olhar os números. A HUBIX faz isso. Link na bio.",
+   "producao": {
+    "corpo": "Tom narrativo — como quem conta uma história com detalhes reais. A expressão muda: séria no problema, mais leve na solução. Câmera próxima, cria conexão com o espectador. Duração: 70 a 90 segundos — o caso justifica mais tempo.",
+    "edicao": "Nenhuma identificação do cliente — caso completamente anonimizado. Sobrepor \"R$ 500k\" em tela no momento do gancho. Legenda automática ativa. Cortes entre os blocos da narrativa, sem efeitos.",
+    "thumb": "Diego com expressão séria e envolvente. Texto: \"R$ 500k/mês. Não sabiam o lucro.\" Fundo escuro, fonte bold branca, logo HUBIX. Formato Reels vertical 1080×1920px."
+   },
+   "legenda": "R$ 500 mil por mês de faturamento.\nMargem desconhecida.\nCaixa sempre apertado.\n\nEsse empresário não precisava vender mais.\nPrecisava entender o que os números já estavam dizendo.\n\nCom os dados certos, a decisão ficou óbvia.\nEm três meses, o lucro real apareceu.\n\nSua empresa está contando a mesma história?\n\nLink na bio.",
+   "cta": "Sua empresa está contando a mesma história? Link na bio.",
+   "tags": "#casodeestudo #gestaofinanceira #bpofinanceiro #hubix #lucro #margemdelucro #precificacao #empreendedorismo #pme #resultado",
+   "stories": [
+    "Story 1: trecho do gancho — \"Você se identifica?\"",
+    "Story 2: enquete — \"Você sabe a margem real de cada produto?\" | SIM / NÃO",
+    "Story 3: CTA direto para contato"
+   ],
+   "conexao": {
+    "de": "Sábado: legado e Dia dos Pais. Hoje: caso concreto do que acontece sem gestão.",
+    "para": "Quinta (Semana 5): diferença entre BPO Financeiro e contabilidade."
+   }
+  },
+  "12": {
+   "f": "carrossel",
+   "funil": "Consideração",
+   "goal": "Consideração · guia prático",
+   "t": "5 indicadores para fechar agosto com clareza",
+   "objetivo": "Guia prático de indicadores financeiros para fechar agosto. Conteúdo de alto salvamento e utilidade. Aproveita o Dia Internacional da Juventude para incluir viés de educação financeira.",
+   "design": {
+    "formato": "Carrossel quadrado · 7 slides · 1080×1080px",
+    "estilo": "Visual de guia prático — clean, educativo, fácil de salvar. Cada slide tem um número grande em destaque.",
+    "texto": "CAPA — 5 indicadores para fechar agosto com clareza. Salva esse carrossel.\n\nS2 — 1. Ticket médio: quanto cada cliente gasta em média. Se cair, você vende mais e fatura menos. Se subir com margem, isso é crescimento real.\n\nS3 — 2. Taxa de inadimplência: quanto do que você vendeu ainda não recebeu. Acima de 3 a 5%, sinal de alerta. Você não pode contar com o que não entrou.\n\nS4 — 3. Margem de contribuição: quanto sobra de cada venda depois dos custos variáveis. Esse número decide o que vale vender e o que está consumindo caixa.\n\nS5 — 4. Custo fixo como % da receita: quanto do que entra vai direto para pagar os custos que não mudam. Se passar de 40% da receita líquida, a margem está em risco.\n\nS6 — 5. Projeção de caixa, próximos 30 dias: o mais importante de todos. O que vai entrar, o que vai sair, se vai sobrar ou vai apertar. Quem projeta, não se surpreende.\n\nS7 (CTA) — A HUBIX monitora esses indicadores por você. Todo mês, com método. Para que você decida com dados — não com esperança. Link na bio.",
+    "cores": "Branco e cinza claro alternados. Azul nos destaques. Capa em fundo escuro com o número \"5\" enorme em azul. S6 em azul escuro com o \"5\" grande branco. S7 em azul HUBIX.",
+    "elementos": "Ícone por indicador: carrinho (1), alerta vermelho (2), gráfico (3), prédio (4). Números em azul, laranja, verde e laranja respectivamente. Logo em todos os slides.",
+    "acao": "Criar um template de slide numerado e repetir. A consistência é o que torna o carrossel salvável."
+   },
+   "legenda": "5 indicadores. Um mês inteiro de clareza.\n\n1. Ticket médio\n2. Taxa de inadimplência\n3. Margem de contribuição\n4. Custo fixo como % da receita\n5. Projeção de caixa — próximos 30 dias\n\nSalva esse carrossel. É para olhar toda semana.\n\nLink na bio.",
+   "cta": "Salva esse carrossel. Link na bio.",
+   "tags": "#indicadoresfinanceiros #gestaofinanceira #agosto #hubix #bpofinanceiro #ticketmedio #inadimplencia #margem #fluxodecaixa #pme",
+   "stories": [
+    "Story 1: repost com \"Quantos você já acompanha?\"",
+    "Story 2: Diego comenta o indicador mais negligenciado que vê nas PMEs",
+    "Story 3: CTA direto"
+   ],
+   "conexao": {
+    "de": "Semana 4: construindo para durar. Hoje: as ferramentas concretas para isso.",
+    "para": "Sexta: carrossel de conversão — antes e depois com a HUBIX."
+   }
+  },
+  "14": {
+   "f": "carrossel",
+   "funil": "Conversão",
+   "goal": "Conversão · antes e depois",
+   "t": "O que muda quando a HUBIX assume a gestão financeira",
+   "objetivo": "Mostrar de forma concreta o antes e o depois com a HUBIX. Maior conteúdo de conversão do período. Deve ser o post mais bem produzido visualmente do calendário.",
+   "design": {
+    "formato": "Carrossel quadrado · 6 slides · 1080×1080px",
+    "estilo": "Maior produção visual do período inteiro. O slide de CTA deve ser o mais impactante do calendário.",
+    "texto": "CAPA — Antes e depois. O que muda quando a HUBIX assume a gestão financeira.\n\nS2 — Antes da HUBIX: você não sabe o lucro real do mês · o caixa surpreende todo final de mês · você decide no achismo · a gestão financeira depende de você\n\nS3 — Depois da HUBIX: você tem o DRE todo mês · o caixa é projetado com semanas de antecedência · você decide com dados reais · a gestão financeira tem processo próprio\n\nS4 — O que a HUBIX faz na prática: gestão do fluxo de caixa · contas a pagar e a receber · conciliação bancária · relatórios financeiros mensais · análise de indicadores\n\nS5 — Para quem é a HUBIX? Para empresas que faturam e não sabem o lucro. Para empresários que decidem no escuro. Para quem quer crescer com controle. Para quem entendeu que gestão é investimento.\n\nS6 (CTA) — Pronto para ter clareza? A primeira conversa é gratuita. Entenda como a HUBIX pode transformar a gestão financeira da sua empresa. Link na bio.",
+    "cores": "Capa dividida visualmente — esquerda cinza (antes), direita azul HUBIX (depois), logo ao centro. S2 fundo cinza com alertas vermelhos. S3 fundo branco com checks verdes. S4 azul claro suave. S6 azul HUBIX intenso.",
+    "elementos": "Ícone por item nos slides de lista e de serviços. Logo grande no S6.",
+    "acao": "Atenção especial ao último slide — é o mais importante do mês. Ele é o cartão de visita da campanha inteira."
+   },
+   "legenda": "Não é promessa. É processo.\n\nA HUBIX assume a gestão financeira da sua empresa para que você pare de adivinhar e comece a decidir.\n\nSe você chegou até aqui, é porque algo nesses últimos posts fez sentido.\n\nA próxima etapa é simples: uma conversa gratuita.\n\nLink na bio.",
+   "cta": "A primeira conversa é gratuita. Link na bio.",
+   "tags": "#bpofinanceiro #hubix #gestaofinanceira #antesdepois #resultados #fluxodecaixa #empreendedorismo #pme #crescimentoempresarial #conversao",
+   "stories": [
+    "Story 1: capa do carrossel com CTA direto",
+    "Story 2: cronômetro de 24h — \"Fala com a gente hoje\"",
+    "Story 3: link direto para WhatsApp ou agendamento"
+   ],
+   "conexao": {
+    "de": "Quarta: indicadores para acompanhar. Hoje: o que acontece quando você tem quem faça isso por você.",
+    "para": "Sábado: post final do calendário — frase manifesto da HUBIX."
+   }
+  },
+  "15": {
+   "f": "frase",
+   "funil": "Atração",
+   "goal": "Fechamento · manifesto",
+   "t": "Quem controla os números controla o crescimento",
+   "objetivo": "Encerrar o calendário com a frase que resume toda a filosofia da HUBIX. Impacto máximo. Deixar o mês registrado com autoridade.",
+   "design": {
+    "formato": "Post quadrado · 1080×1080px",
+    "estilo": "O post mais institucional do calendário. Encerramento e cartão de visita ao mesmo tempo.",
+    "texto": "Quem controla os números\ncontrola o crescimento da empresa.\n\n(linha separadora fina)\n\nO mês virou.\nO que você vai fazer diferente?\n\n— Diego | HUBIX",
+    "cores": "Fundo azul profundo HUBIX (#1565C0) — identidade máxima. Primeira linha em branco regular, segunda em branco bold e grande. Fechamento em cinza claro, corpo menor.",
+    "elementos": "Logo HUBIX em destaque maior do que nos outros posts. Sem imagens — só texto e identidade. Assinatura discreta na parte inferior.",
+    "acao": "Encerrar com o máximo de identidade de marca. É o post que fica salvo como referência da campanha."
+   },
+   "legenda": "Esse post encerra um ciclo.\n\nTrinta dias de conteúdo sobre o que separa empresas que crescem das que ficam no lugar.\n\nA resposta sempre foi a mesma: controle.\n\nControle dos números. Controle das decisões. Controle do crescimento.\n\nA HUBIX está aqui quando você decidir dar esse passo.\n\nSalva esse post. Compartilha com quem precisa ouvir.",
+   "cta": "Salva. Compartilha com quem precisa ouvir isso.",
+   "tags": "#mentalidadeempresarial #gestaofinanceira #hubix #bpofinanceiro #crescimento #controle #empreendedorismo #numeros #financasempresariais #pme",
+   "stories": [
+    "Story 1: repost do post",
+    "Story 2: Diego em vídeo de 20s — reflexão pessoal sobre o mês e o que vem pela frente",
+    "Story 3: CTA final — \"Se você chegou até aqui, é hora da conversa. Link na bio.\""
+   ],
+   "conexao": {
+    "de": "Sexta: maior post de conversão do calendário. Hoje: encerramento com identidade.",
+    "para": "Início do próximo calendário."
+   }
+  },
+  "01": {
+   "f": "frase",
+   "funil": "Atração",
+   "goal": "Atração · abertura do mês",
+   "t": "Agosto começa. Você entra com dados ou com esperança?",
+   "objetivo": "Inaugurar agosto com frase reflexiva e impactante. Sem produção complexa. Alta taxa de salvamento.",
+   "design": {
+    "formato": "Post quadrado · 1080×1080px",
+    "estilo": "Limpo, inaugura um novo ciclo. Mais leve que os posts de julho, mantém autoridade.",
+    "texto": "Agosto começa.\n\nVocê entra nele com fluxo de caixa projetado\nou com esperança de que vai dar certo?\n\nEsperança não é estratégia.\nDado é.\n\n— Diego | HUBIX",
+    "cores": "Tom de abertura — azul médio, ou branco com detalhe em azul. Mais leve que os posts de julho.",
+    "elementos": "Assinatura \"— Diego | HUBIX\" discreta na parte inferior.",
+    "acao": "\"Agosto começa.\" em fonte regular. \"Esperança não é estratégia.\" em bold grande, destaque máximo. \"Dado é.\" em bold menor mas impactante, numa cor de contraste."
+   },
+   "legenda": "Muitos empresários entram em cada mês novo torcendo.\n\nTorcendo para o cliente pagar. Para a venda aparecer. Para o caixa aguentar.\n\nQuem tem fluxo de caixa projetado não torce — planeja.\nE quem planeja decide diferente porque enxerga diferente.\n\nConversa gratuita. Link na bio.",
+   "cta": "Conversa gratuita. Link na bio.",
+   "tags": "#agosto #gestaofinanceira #fluxodecaixa #hubix #planejamento #bpofinanceiro #empreendedorismo #pme #decisao",
+   "stories": [
+    "Story 1: repost com enquete \"Com o que você entra em agosto?\" | DADOS / ESPERANÇA",
+    "Story 2: Diego comenta o resultado com honestidade"
+   ],
+   "conexao": {
+    "de": "Quarta: caixa apertado apesar do faturamento. Hoje: como entrar no mês novo com controle.",
+    "para": "Segunda: erro clássico de misturar PF e PJ — base de qualquer gestão."
+   }
+  },
+  "03": {
+   "f": "post",
+   "funil": "Consideração",
+   "goal": "Consideração · diagnóstico",
+   "t": "4 sinais de que você ainda mistura PF com PJ — e o que isso custa",
+   "objetivo": "Falar sobre o erro clássico de misturar conta pessoal e empresarial. Conteúdo de amplo alcance e fácil identificação. Sem produção complexa — copy forte e arte limpa.",
+   "design": {
+    "formato": "Post quadrado · 1080×1080px",
+    "estilo": "Diagnóstico claro. Fácil de ler em segundos. Gera identificação imediata. Clean e direto.",
+    "texto": "4 sinais de que você ainda mistura finanças pessoais com as da empresa:\n\n1. Você paga conta pessoal pela conta da empresa (ou vice-versa)\n2. Você não sabe ao certo quanto é o seu pró-labore\n3. O lucro da empresa depende de você não precisar de dinheiro\n4. No fim do mês, você não sabe onde foi o dinheiro da empresa\n\nSeparar PF de PJ não é burocracia.\nÉ a base de qualquer gestão financeira séria.\n\n— Diego | HUBIX",
+    "cores": "Fundo branco ou cinza muito claro. Título em bold escuro. Números 1, 2, 3, 4 em cor de destaque (azul ou laranja).",
+    "elementos": "Linha lateral colorida (vermelho ou laranja) sugerindo alerta.",
+    "acao": "Lista numerada em fonte regular, com os números destacados. Prioridade absoluta à legibilidade rápida."
+   },
+   "legenda": "Esse erro é mais comum do que parece — e mais caro do que a maioria imagina.\n\nQuando PF e PJ se misturam, você perde a noção do lucro real, impossibilita o cálculo correto do pró-labore e deixa os números da empresa sem confiabilidade para qualquer decisão importante.\n\nA separação é o primeiro passo. A HUBIX cuida do resto.\n\nVocê se identificou com algum dos pontos? Conta nos comentários.",
+   "cta": "Você se identificou? Conta nos comentários. Link na bio.",
+   "tags": "#pfpj #gestaofinanceira #contaempresarial #hubix #bpofinanceiro #prolabore #empreendedorismo #financasempresariais #pme",
+   "stories": [
+    "Story 1: enquete — \"Você separa PF de PJ?\" | SIM, SEMPRE / AINDA MISTURO",
+    "Story 2: Diego comenta o resultado com tom direto",
+    "Story 3: CTA — \"Se você marcou 2 ou mais, a gente precisa conversar\""
+   ],
+   "conexao": {
+    "de": "Sábado: inauguração de agosto. Hoje: o erro de base que compromete todo o resto.",
+    "para": "Quinta (Semana 4): empresa vs emprego com CNPJ — tema de legado."
+   }
+  },
+  "06": {
+   "f": "carrossel",
+   "funil": "Consideração",
+   "goal": "Consideração · conteúdo âncora",
+   "t": "Você está construindo uma empresa ou um emprego para si mesmo?",
+   "objetivo": "Provocar reflexão sobre a diferença entre construir uma empresa e criar um emprego para si mesmo. Conteúdo de alto impacto e salvamento. Âncora da semana.",
+   "design": {
+    "formato": "Carrossel quadrado · 5 slides · 1080×1080px",
+    "estilo": "Narrativa de diagnóstico → aspiração. O leitor deve sentir os dois lados.",
+    "texto": "CAPA — \"Você está construindo uma empresa… ou um emprego para si mesmo?\" / \"(essa pergunta muda tudo.)\"\n\nS2 — Você tem um emprego se: a empresa para quando você para · você é o único que sabe de tudo · o caixa depende exclusivamente das suas vendas · você não consegue tirar férias sem ansiedade\n\nS3 — Você tem uma empresa se: existem processos que funcionam sem você · os números são acompanhados por alguém de confiança · o caixa é previsível semanas à frente · as decisões são tomadas com base em indicadores\n\nS4 — A virada acontece quando você para de trabalhar NO negócio e começa a trabalhar O negócio. E isso começa pela gestão financeira.\n\nS5 (CTA) — A HUBIX ajuda você a fazer essa virada. Organizamos a gestão financeira para que você tenha clareza, controle e tempo para construir de verdade. Link na bio.",
+    "cores": "Capa em fundo escuro premium com texto branco. S2 fundo cinza claro com marcadores vermelhos (diagnóstico honesto). S3 fundo branco com marcadores verdes (aspiração e clareza). S4 fundo azul escuro com a frase em branco, impacto máximo. S5 fundo azul HUBIX.",
+    "elementos": "Logo em todos os slides. CTA claro no S5.",
+    "acao": "O contraste entre S2 e S3 é o coração da peça — mesma estrutura de lista, paletas opostas."
+   },
+   "legenda": "Há uma diferença enorme entre trabalhar muito e construir algo.\n\nMuitos empresários trabalham 12 horas por dia numa empresa que depende inteiramente deles. Isso não é empresa. É emprego com CNPJ.\n\nA virada começa quando você organiza os processos — e o financeiro é sempre o primeiro.\n\nSalva esse carrossel. Compartilha com quem está no ciclo.\n\nLink na bio.",
+   "cta": "Salva e compartilha. Link na bio para conversar.",
+   "tags": "#gestaoempresarial #legado #empreendedorismo #hubix #bpofinanceiro #escalabilidade #empresa #processos #crescimento #pme",
+   "stories": [
+    "Story 1: enquete — \"Você sente que tem empresa ou emprego com CNPJ?\" | EMPRESA / EMPREGO",
+    "Story 2: Diego comenta o resultado com honestidade"
+   ],
+   "conexao": {
+    "de": "Semana 3: base financeira. Hoje: o que você está construindo com essa base.",
+    "para": "Sábado: frase sobre legado — preparação para o Dia dos Pais no domingo."
+   }
+  },
+  "08": {
+   "f": "frase",
+   "funil": "Atração",
+   "goal": "Atração · legado",
+   "t": "O maior presente que um pai empresário pode deixar",
+   "objetivo": "Frase poderosa sobre legado no dia anterior ao Dia dos Pais. Máxima emoção + autoridade. Alta taxa de compartilhamento.",
+   "design": {
+    "formato": "Post quadrado · 1080×1080px",
+    "estilo": "O post mais emotivo do calendário. Sem frieza. Presença e calor. O tom muda propositalmente para criar contraste emocional na semana.",
+    "texto": "O maior presente que um pai empresário\npode deixar é uma empresa que funciona sem ele.\n\nNão a empresa que ele carregou nas costas.\nA empresa que ele construiu para durar.\n\n— Diego | HUBIX",
+    "cores": "Tom quente — bege, âmbar, creme ou verde escuro. Deliberadamente diferente dos posts anteriores.",
+    "elementos": "Assinatura discreta. Sem ícones.",
+    "acao": "Fonte elegante, mais orgânica que a dos outros posts. Texto bem espaçado, com \"construiu para durar\" em destaque."
+   },
+   "legenda": "Dia dos Pais é amanhã.\n\nPara os empresários que são pais: esse é o verdadeiro legado.\n\nNão o faturamento do ano. Não o carro. Não a conquista de um mês.\n\nUma empresa sólida, com processos, com controle financeiro — essa é a herança que fica.\n\nSalva. Compartilha com aquele pai empresário que você admira.",
+   "cta": "Salva. Compartilha com aquele pai empresário que você admira.",
+   "tags": "#diadospais #legado #empreendedorismo #hubix #gestaoempresarial #empresariopai #construirparadurar #bpofinanceiro",
+   "stories": [
+    "Story 1: repost do post",
+    "Story 2: Diego em vídeo pessoal de 15s — algo genuíno sobre legado ou sobre o próprio pai"
+   ],
+   "conexao": {
+    "de": "Quinta: empresa vs emprego. Hoje: o legado que vale a pena construir.",
+    "para": "Segunda: Reels sobre decisão com dados — voltamos ao modo estratégico."
+   }
+  }
+ }
+}
 };
 /* ==== MESES:END ==== */
 
@@ -656,6 +1089,7 @@ function openModal(key){
   mDate.textContent=`${day} de ${M().nome} · ${DOW_NAMES[dowOf(day)]}`;
   mBadge.textContent=FMT[it.f]+(it.vazio?' · a preencher':'');
   mBadge.style.background=it.vazio?'var(--ink-3)':FCOLOR[it.f];
+  document.getElementById('mFunil').textContent=it.funil||'';
   mTitle.textContent=it.t||'Slot reservado';
   mGoal.textContent=it.goal||`Espaço já na grade — falta escrever o conteúdo`;
   mGoal.style.color=it.vazio?'var(--ink-3)':FCOLOR[it.f];
@@ -679,11 +1113,21 @@ function openModal(key){
   }
 
   let html='';
+  if(it.objetivo){
+    html+=`<div class="blk"><h4>Objetivo da peça</h4><div class="objetivo">${esc(it.objetivo)}</div></div>`;
+  }
   // legenda / descrição do post
-  html+=`<div class="blk"><h4>${it.f==='reel'?'Descrição do post (legenda)':'Legenda do post'}</h4><div class="content">${esc(it.legenda)}</div></div>`;
+  html+=`<div class="blk"><h4>${it.f==='reel'?'Legenda do post':'Legenda do post'}</h4><div class="content">${esc(it.legenda)}</div></div>`;
 
   if(it.roteiro){
     html+=`<div class="blk"><h4>Roteiro · leitura para teleprompter</h4><div class="teleprompter">${esc(it.roteiro)}</div></div>`;
+  }
+  if(it.producao){
+    const p=it.producao;
+    html+=`<div class="blk"><h4>Gravação e edição</h4>`;
+    [['Corpo e enquadramento',p.corpo],['Produção e edição',p.edicao],['Thumbnail',p.thumb]]
+      .forEach(([k,v])=>{ if(v) html+=`<div class="dz"><div class="k">${k}</div><div class="v">${esc(v)}</div></div>`; });
+    html+=`</div>`;
   }
   if(it.design){
     const d=it.design;
@@ -692,7 +1136,20 @@ function openModal(key){
     rows.forEach(([k,v])=>{ if(v) html+=`<div class="dz"><div class="k">${k}</div><div class="v">${esc(v)}</div></div>`; });
     html+=`</div>`;
   }
+  if(it.cta){
+    html+=`<div class="blk"><h4>Chamada para ação</h4><div class="cta-box">${esc(it.cta)}</div></div>`;
+  }
   html+=`<div class="blk"><h4>Hashtags</h4><div class="tags">${esc(it.tags)}</div></div>`;
+  if(it.stories&&it.stories.length){
+    html+=`<div class="blk"><h4>Stories complementares</h4><ul class="stories">`+
+      it.stories.map(s=>`<li>${esc(s)}</li>`).join('')+`</ul></div>`;
+  }
+  if(it.conexao&&(it.conexao.de||it.conexao.para)){
+    html+=`<div class="blk"><h4>Lugar na narrativa</h4><div class="conexao">`;
+    if(it.conexao.de)   html+=`<div><b>Vem de</b>${esc(it.conexao.de)}</div>`;
+    if(it.conexao.para) html+=`<div><b>Prepara</b>${esc(it.conexao.para)}</div>`;
+    html+=`</div></div>`;
+  }
   mBody.innerHTML=html;
 
   // reset approval UI + carregar estado salvo
