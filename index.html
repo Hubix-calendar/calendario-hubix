@@ -99,6 +99,9 @@
   .cell .status.ok{background:var(--ok)}
   .cell .status.no{background:var(--no)}
   .cell.holiday .num{color:var(--reel)}
+  .cell.posted{background:color-mix(in srgb,var(--brand-solid) 15%,var(--panel-2));border-color:color-mix(in srgb,var(--brand-solid) 40%,var(--line))}
+  .cell.posted .num{color:var(--brand)}
+  .cell .posted-badge{position:absolute;top:9px;left:10px;width:18px;height:18px;border-radius:50%;background:var(--brand-solid);color:#fff;display:grid;place-items:center;font-size:9px;font-weight:800}
 
   @media (max-width:560px){
     .cal-card{padding:10px;border-radius:24px}
@@ -159,6 +162,10 @@
   .btn:active{transform:scale(.97)}
   .btn.sel-ok{background:var(--ok);color:#fff;box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 30%,transparent)}
   .btn.sel-no{background:var(--no);color:#fff;box-shadow:0 0 0 3px color-mix(in srgb,var(--no) 30%,transparent)}
+  .posted-toggle{margin-top:10px;width:100%;background:var(--panel-2);color:var(--ink-2);border:1px solid var(--line);border-radius:14px;padding:13px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;transition:.15s}
+  .posted-toggle:active{transform:scale(.98)}
+  .posted-toggle.on{background:var(--brand-solid);color:#fff;border-color:transparent}
+  .mk-post{width:14px;height:14px;border-radius:50%;background:var(--brand-solid);color:#fff;display:inline-grid;place-items:center;font-size:8px;font-weight:800}
   .reject-box{margin-top:12px;display:none}
   .reject-box.show{display:block}
   .reject-box label{font-size:13px;color:var(--ink-2);font-weight:600;display:block;margin-bottom:7px}
@@ -247,6 +254,7 @@
     <span class="lg"><span class="dot" style="background:var(--carrossel)"></span>Carrossel</span>
     <span class="lg"><span class="dot" style="background:var(--frase)"></span>Frase</span>
     <span class="lg"><span class="dot" style="background:var(--reel)"></span>Reel</span>
+    <span class="lg"><span class="mk-post">▶</span>Postado</span>
   </div>
 
   <div class="cal-card">
@@ -365,6 +373,7 @@
         <button class="btn approve" id="btnApprove">✓ Aprovado</button>
         <button class="btn reject" id="btnReject">✕ Recusado</button>
       </div>
+      <button class="posted-toggle" id="btnPosted">▶ Marcar como postado</button>
       <div class="reject-box" id="rejectBox">
         <label>Por que foi recusado? Descreva o ajuste necessário:</label>
         <textarea id="rejectText" placeholder="Ex.: trocar o gancho, ajustar cor da arte, revisar a oferta..."></textarea>
@@ -1353,16 +1362,24 @@ document.getElementById('mesNext').addEventListener('click',()=>{
 function stKey(key){return 'hubix-'+MES+'-'+key}
 function getStatus(key){try{return JSON.parse(localStorage.getItem(stKey(key)))}catch(e){return null}}
 function setStatus(key,val){localStorage.setItem(stKey(key),JSON.stringify(val))}
+function patchStatus(key,patch){ const s=getStatus(key)||{}; Object.assign(s,patch); s.ts=Date.now(); setStatus(key,s); }
 function paintStatus(){
   document.querySelectorAll('.cell.has').forEach(c=>{
-    const s=getStatus(c.dataset.key);
-    let el=c.querySelector('.status');
-    if(el) el.remove();
-    if(s){
+    const s=getStatus(c.dataset.key)||{};
+    let el=c.querySelector('.status'); if(el) el.remove();
+    let pb=c.querySelector('.posted-badge'); if(pb) pb.remove();
+    c.classList.remove('posted');
+    if(s.decision){
       const b=document.createElement('div');
       b.className='status '+(s.decision==='ok'?'ok':'no');
       b.textContent=s.decision==='ok'?'✓':'✕';
       c.appendChild(b);
+    }
+    if(s.posted){
+      c.classList.add('posted');
+      const p=document.createElement('div');
+      p.className='posted-badge'; p.textContent='▶'; p.title='Postado';
+      c.appendChild(p);
     }
   });
 }
@@ -1387,7 +1404,8 @@ const mDate=document.getElementById('mDate'),mBadge=document.getElementById('mBa
       mTitle=document.getElementById('mTitle'),mGoal=document.getElementById('mGoal'),mBody=document.getElementById('mBody');
 const btnApprove=document.getElementById('btnApprove'),btnReject=document.getElementById('btnReject'),
       rejectBox=document.getElementById('rejectBox'),rejectText=document.getElementById('rejectText'),
-      rejectSave=document.getElementById('rejectSave'),statusNote=document.getElementById('statusNote');
+      rejectSave=document.getElementById('rejectSave'),statusNote=document.getElementById('statusNote'),
+      btnPosted=document.getElementById('btnPosted');
 let CUR=null;
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
@@ -1471,9 +1489,10 @@ function openModal(key){
   const saved=getStatus(key);
   if(saved){
     if(saved.decision==='ok'){ btnApprove.classList.add('sel-ok'); showNote('ok'); }
-    else{ btnReject.classList.add('sel-no'); rejectText.value=saved.reason||''; showNote('no',saved.reason);
+    else if(saved.decision==='no'){ btnReject.classList.add('sel-no'); rejectText.value=saved.reason||''; showNote('no',saved.reason);
       if(saved.reason){ rejectBox.classList.add('show'); } }
   }
+  updatePostedBtn(!!(saved&&saved.posted));
 
   overlay.classList.add('show');
   document.body.style.overflow='hidden';
@@ -1497,7 +1516,7 @@ document.addEventListener('keydown',e=>{
 btnApprove.addEventListener('click',()=>{
   btnApprove.classList.add('sel-ok'); btnReject.classList.remove('sel-no');
   rejectBox.classList.remove('show');
-  setStatus(CUR,{decision:'ok',ts:Date.now()});
+  patchStatus(CUR,{decision:'ok'});
   showNote('ok'); paintStatus();
 });
 btnReject.addEventListener('click',()=>{
@@ -1508,9 +1527,21 @@ btnReject.addEventListener('click',()=>{
 });
 rejectSave.addEventListener('click',()=>{
   const reason=rejectText.value.trim();
-  setStatus(CUR,{decision:'no',reason,ts:Date.now()});
+  patchStatus(CUR,{decision:'no',reason});
   logLearning(CUR,reason);
   showNote('no',reason); paintStatus();
+});
+
+/* ---- POSTADO ---- */
+function updatePostedBtn(on){
+  btnPosted.classList.toggle('on',on);
+  btnPosted.textContent = on ? '▶ Postado ✓  (toque para desmarcar)' : '▶ Marcar como postado';
+}
+btnPosted.addEventListener('click',()=>{
+  const s=getStatus(CUR)||{};
+  const now=!s.posted;
+  patchStatus(CUR,{posted:now});
+  updatePostedBtn(now); paintStatus();
 });
 
 /* ---- BANCO DE APRENDIZADO (agregado, todos os meses) ---- */
